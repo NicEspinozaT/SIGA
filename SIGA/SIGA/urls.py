@@ -18,11 +18,13 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import mostrar_inicio
+from .views import mostrar_inicio, mostrar_contacto, mostrar_nosotros
 
 
 urlpatterns = [
     path("", mostrar_inicio, name="mostrar_inicio"),
+    path("contacto/", mostrar_contacto, name="mostrar_contacto"),
+    path("nosotros/", mostrar_nosotros, name="mostrar_nosotros"),
     path("admin/", admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
