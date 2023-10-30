@@ -15,3 +15,12 @@ def mostrar_nosotros(request):
 
 def matricula(request):
     return render(request, "matricula/matricula.html")
+
+def listar_evaluaciones(request):
+    return render(request, "informacion/listarEvaluaciones.html")
+
+def listar_asistencia(request):
+    return render(request, "informacion/listarAsistencia.html")
+
+def listar_horario(request):
+    return render(request, "informacion/listarHorario.html")
