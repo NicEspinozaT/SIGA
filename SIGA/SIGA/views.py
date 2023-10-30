@@ -2,20 +2,20 @@ from django.shortcuts import render
 
 
 def mostrar_inicio(request):
-    return render(request, "hijo/inicio.html")
+    return render(request, "home/inicio.html")
 
 
 def mostrar_contacto(request):
-    return render(request, "hijo/contacto.html")
+    return render(request, "informacion/contacto.html")
 
 
 def mostrar_nosotros(request):
-    return render(request, "hijo/sobre-nosotros.html")
+    return render(request, "informacion/sobre_nosotros.html")
 
 
-def login(reques):
-    return render(reques, "hijo/login.html")
+def login(request):
+    return render(request, "user/login.html")
 
 
-def matricula(reques):
-    return render(reques, "hijo/matricula.html")
+def matricula(request):
+    return render(request, "matricula/matricula.html")
