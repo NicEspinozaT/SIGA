@@ -11,3 +11,6 @@ def vistaApoderado(request):
 
 def vistaDocente(request):
   return render (request, "user/docente/vistaDocente.html")
+
+def perfilDocente(request):
+  return render (request, "user/docente/perfil.html")

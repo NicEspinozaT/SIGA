@@ -19,7 +19,16 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from m_user.urls import urlpatterns as urlUser
-from .views import mostrar_inicio, mostrar_contacto, mostrar_nosotros, matricula, listar_evaluaciones,listar_horario,listar_asistencia
+from .views import (
+    mostrar_inicio,
+    mostrar_contacto,
+    mostrar_nosotros,
+    matricula,
+    listar_evaluaciones,
+    listar_horario,
+    listar_asistencia,
+    listar_curso
+)
 
 
 urlpatterns = [
@@ -27,9 +36,10 @@ urlpatterns = [
     path("contacto/", mostrar_contacto, name="mostrar_contacto"),
     path("nosotros/", mostrar_nosotros, name="mostrar_nosotros"),
     path("matricula/", matricula, name="matricula"),
-    path("evaluaciones/", listar_evaluaciones, name="evaluaciones" ),
-    path("horario/", listar_horario, name="horario" ),
-    path("asistencia/", listar_asistencia, name="asistencia" ),
+    path("evaluaciones/", listar_evaluaciones, name="evaluaciones"),
+    path("horario/", listar_horario, name="horario"),
+    path("asistencia/", listar_asistencia, name="asistencia"),
+    path("cursos/", listar_curso, name="cursos"),
     path("", include(urlUser)),
     path("admin/", admin.site.urls),
 ]

@@ -1,0 +1,53 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+Perfil Docente
+{% endblock title %}
+
+{% block content %} 
+
+<main class="container">
+    <br>
+    <article class="row">
+        <div class="card col-md-4 m-1">
+            <img src="https://picsum.photos/300/300" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Profesor 1</h5>
+                <p class="card-text">NombreProfesor Apellido profesor</p>
+                <p class="card-text">Profesor@gmail.cl</p>
+                <a href="#" class="btn btn-primary">Modificar perfil
+                </a>
+            </div>
+        </div>
+
+
+        <section class="card col-md-6 m-1 " style="text-align:center; border: none;">
+
+            <table class="table table-bordered" style="border-radius: 3px;">
+                <thead style="border-radius: 3px;">
+                    <tr>
+                        <th scope="row" colspan="4" class="text-center">Accesos</th>
+
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="{% url 'cursos' %}" style="text-decoration: none;">Cursos</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" style="text-decoration: none;">Horarios</a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </section>
+
+
+    </article>
+</main>
+{% endblock content %}

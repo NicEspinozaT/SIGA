@@ -1,0 +1,62 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+Cursos
+{% endblock title %}
+
+{% block content %} 
+<div class="content">
+  <div class="offset-2 col-8">
+    <br />
+    <h3>Lista de Cursos</h3>
+    <br />
+    <ol class="list-group list-group-numbered">
+      <li
+        class="list-group-item d-flex justify-content-between align-items-start"
+      >
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">1° Medio A</div>
+          Profesor Jefe: ...
+        </div>
+        <a href="{% url 'asistencia' %}">
+          <span class="badge bg-primary rounded-pill"> Editar Asistencia </span>
+        </a>
+      </li>
+      <li
+        class="list-group-item d-flex justify-content-between align-items-start"
+      >
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">1° Medio B</div>
+          Profesor Jefe: ...
+        </div>
+        <a href="{% url 'asistencia' %}">
+          <span class="badge bg-primary rounded-pill">  Editar Asistencia </span>
+        </a>
+      </li>
+      <li
+        class="list-group-item d-flex justify-content-between align-items-start"
+      >
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">2° Medio A</div>
+          Profesor Jefe: ...
+        </div>
+        <a href="{% url 'asistencia' %}">
+          <span class="badge bg-primary rounded-pill">  Editar Asistencia </span>
+        </a>
+      </li>
+      <li
+        class="list-group-item d-flex justify-content-between align-items-start"
+      >
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">2° Medio B</div>
+          Profesor Jefe: ...
+        </div>
+        <a href="{% url 'asistencia' %}">
+          <span class="badge bg-primary rounded-pill">  Editar Asistencia </span>
+        </a>
+      </li>
+    </ol>
+  </div>
+</div>
+{% endblock content %} 
