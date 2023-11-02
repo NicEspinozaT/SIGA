@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import login, vistaAlumno, vistaApoderado, vistaDocente, perfilDocente
+from .views import login, vistaAlumno, vistaApoderado, vistaDocente, perfilDocente, solicitar_contraseña
 
 urlpatterns = [
     path("login/", login, name="login"),
+    path("solicitar_contraseña/", solicitar_contraseña, name="solicitarContraseña"),
     path("alumno/", vistaAlumno, name="alumno"),
     path("apoderado/", vistaApoderado, name="apoderado"),
     path("docente/", vistaDocente, name="docente"),

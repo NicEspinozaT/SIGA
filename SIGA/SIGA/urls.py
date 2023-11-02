@@ -27,7 +27,7 @@ from .views import (
     listar_evaluaciones,
     listar_horario,
     listar_asistencia,
-    listar_curso
+    listar_curso,
 )
 
 
