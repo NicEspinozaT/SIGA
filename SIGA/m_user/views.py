@@ -17,3 +17,6 @@ def perfilDocente(request):
 
 def solicitar_contraseña(request):
     return render(request, "user/solicitarContraseña.html")
+
+def vistaAdmin(request):
+    return render(request, "admin/admin.html")
