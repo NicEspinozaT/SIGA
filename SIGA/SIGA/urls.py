@@ -27,7 +27,8 @@ from .views import (
     listar_evaluaciones,
     listar_horario,
     listar_asistencia,
-    listar_curso
+    listar_curso,
+    asistencia_alumno
 )
 
 
@@ -39,6 +40,7 @@ urlpatterns = [
     path("evaluaciones/", listar_evaluaciones, name="evaluaciones"),
     path("horario/", listar_horario, name="horario"),
     path("asistencia/", listar_asistencia, name="asistencia"),
+    path("asistencia-alumno/", asistencia_alumno, name="asistencia-alumno"),
     path("cursos/", listar_curso, name="cursos"),
     path("", include(urlUser)),
     path("admin/", admin.site.urls),
