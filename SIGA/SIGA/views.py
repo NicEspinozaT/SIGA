@@ -34,3 +34,6 @@ def listar_curso(request):
 
 def asistencia_alumno(request):
     return render(request, "informacion/asistenciaAlumno.html")
+
+def horario_docente(request):
+    return render(request, "informacion/horarioDocente.html")

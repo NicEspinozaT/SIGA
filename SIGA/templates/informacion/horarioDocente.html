@@ -1,0 +1,66 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+Horario
+{% endblock title %}
+
+{% block content %} 
+<h1>Horario</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Horario</th>
+      <th scope="col">Lunes</th>
+      <th scope="col">Martes</th>
+      <th scope="col">Miercoles</th>
+      <th scope="col">Jueves</th>
+      <th scope="col">Viernes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">8:00 - 9:00</th>
+      <td>1º Medio B</td>
+      <td>1º Medio C</td>
+      <td>2º Medio A</td>
+      <td>2º Medio C</td>
+      <td>3º Medio A</td>
+    </tr>
+    <tr>
+      <th scope="row">9:00 - 10:00</th>
+      <td>1º Medio B</td>
+      <td>1º Medio C</td>
+      <td>2º Medio A</td>
+      <td>2º Medio C</td>
+      <td>3º Medio A</td>
+    </tr>
+    <tr>
+      <th scope="row">10:00 - 11:00</th>
+      <td>1º Medio A</td>
+      <td>2º Medio B</td>
+      <td>3º Medio B</td>
+      <td>3º Medio C</td>
+      <td>Jefatura 1º Medio B</td>
+    </tr>
+    <tr>
+      <th scope="row">11:00 - 12:00</th>
+      <td>1º Medio A</td>
+      <td>2º Medio B</td>
+      <td>3º Medio B</td>
+      <td>3º Medio C</td>
+      <td>Jefatura 1º Medio B</td>
+    </tr>
+  </tbody>
+  <tr>
+      <th scope="row">12:00 - 13:00</th>
+      <td>Planificación</td>
+      <td>Planificación</td>
+      <td>Planificación</td>
+      <td>Planificación</td>
+      <td>Planificación</td>
+    </tr>
+</table>
+
+
+{% endblock content %}
