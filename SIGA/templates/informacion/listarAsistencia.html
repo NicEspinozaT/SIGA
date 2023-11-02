@@ -1,18 +1,20 @@
-{% extends 'base/base.html' %}
-{% load static %}
-
-{% block title %}
-Asistencia
-{% endblock title %}
-
-{% block content %} 
+{% extends 'base/base.html' %} 
+{% load static %} 
+{% block title %} 
+Asistencia 
+{%endblock title %} 
+{% block content %}
 <h1>Asistencia 1° Medio B</h1>
 
 <div class="content">
   <div class="offset-2 col-8">
-    <br>
+    <div class="col-5">
+      <label for="fecha_nac">Fecha de Asistencia</label>
+      <input type="date" name="fecha_nac" id="fecha_nac" required />
+    </div>
+    <br />
     <h3>Lista de Estudiantes</h3>
-    <br>
+    <br />
     <ol class="list-group list-group-numbered">
       <li
         class="list-group-item d-flex justify-content-between align-items-start"
@@ -51,7 +53,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 3</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -66,7 +68,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 4</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -81,7 +83,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 5</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -96,7 +98,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 6</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -111,7 +113,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 7</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -126,7 +128,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 8</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -141,7 +143,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 9</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -156,7 +158,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 10</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -171,7 +173,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 11</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -186,7 +188,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 12</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -201,7 +203,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 13</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -216,7 +218,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 14</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -231,7 +233,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 15</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -246,7 +248,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 16</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -261,7 +263,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 17</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -276,7 +278,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 18</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -291,7 +293,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 19</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -306,7 +308,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 20</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -321,7 +323,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 21</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -336,7 +338,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 22</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -351,7 +353,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 23</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -366,7 +368,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 24</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -381,7 +383,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 25</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -396,7 +398,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 26</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -411,7 +413,7 @@ Asistencia
           <div class="fw-bold">Nombre Estudiante 27</div>
           Curso: ...
         </div>
-                <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <select class="form-select" id="inputGroupSelect01">
             <option value="1">Presente</option>
             <option value="2">Ausente</option>
@@ -419,12 +421,10 @@ Asistencia
           </select>
         </div>
       </li>
-
     </ol>
-    <br>
+    <br />
     <a href="#" class="btn btn-primary">Guardar Asistencia</a>
   </div>
 </div>
-
 
 {% endblock content %}

@@ -1,0 +1,87 @@
+{% extends 'base/base.html' %} {% load static %} {% block title %} Asistencia
+{%endblock title %} {% block content %}
+
+<div class="content">
+    <div class="offset-2 col-8">
+            <h3>Asistencia Nicolas Espinazo</h3>
+
+    <div class="mb-3 ">
+        <label for="disabledSelect" class="form-label">Seleccionar mes</label>
+        <select id="disabledSelect" class="form-select">
+        <option>Enero</option>
+        <option>Febrero</option>
+        <option>Marzo</option>
+        <option>Abril</option>
+        <option>Mayo</option>
+        <option>Junio</option>
+        <option>Julio</option>
+        <option>Agosto</option>
+        <option>Septiembre</option>
+        <option>Octubre</option>
+        <option>Noviembre</option>
+        <option>Diciembre</option>
+        </select>
+    </div>
+    <br />
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Semana</th>
+          <th scope="col">Lunes</th>
+          <th scope="col">Martes</th>
+          <th scope="col">Miercoles</th>
+          <th scope="col">Jueves</th>
+          <th scope="col">Viernes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Presente</td>
+          <td>Presente</td>
+          <td>Ausente</td>
+          <td>Presente</td>
+          <td>Atrasado</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Presente</td>
+          <td>Presente</td>
+          <td>Ausente</td>
+          <td>Presente</td>
+          <td>Presente</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Presente</td>
+          <td>Atrasado</td>
+          <td>Presente</td>
+          <td>Presente</td>
+          <td>Atrasado</td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td>Presente</td>
+          <td>Presente</td>
+          <td>Presente</td>
+          <td>Presente</td>
+          <td>Presente</td>
+        </tr>
+      </tbody>
+      <tr>
+        <th scope="row">5</th>
+        <td>Presente</td>
+        <td>Presente</td>
+        <td>Presente</td>
+        <td>Ausente</td>
+        <td>Presente</td>
+      </tr>
+    </table>
+    <br />
+
+    <br />
+    <a href="/" class="btn btn-primary">Volver</a>
+  </div>
+</div>
+
+{% endblock content %}
