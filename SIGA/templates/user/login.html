@@ -4,10 +4,12 @@
 Login 
 {%endblock title %} 
 {% block content %}
-<main class="contaier">
+<main class="container">
+  
   <form>
     
     <div class="mb-3 col-6 offset-3 form-group">
+      <h3>Inicio de sesión</h3>
       <label for="rut">Rut:</label>
       <input
         type="text"
@@ -25,7 +27,10 @@ Login
     <div class="mb-3 col-6 offset-3 form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1" />
       <label class="form-check-label" for="exampleCheck1">Recordar</label>
+      <br>
+      <a href="{% url 'solicitarContraseña' %}">Solicitar contraseña</a>
     </div>
+    
     <a href="{% url 'mostrar_inicio' %}"class="btn btn-primary offset-3">
         Iniciar Sesión
     </a>

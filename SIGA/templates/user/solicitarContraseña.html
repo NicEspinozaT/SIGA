@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %} 
+{% load static %} 
+{% block title %}
+Login 
+{%endblock title %} 
+{% block content %}
+<main class="container">
+  <form>
+    
+    <div class="mb-3 col-6 offset-3 form-group ">
+      <h3>Solicitud de contraseña</h3>
+      <label for="exampleFormControlInput1" class="form-label">Correo electronico:</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
+    </div>
+    
+    <a href="{% url 'mostrar_inicio' %}"class="btn btn-primary offset-3">
+        Solicitar contraseña
+    </a>
+  </form>
+</main>
+{% endblock content %}
