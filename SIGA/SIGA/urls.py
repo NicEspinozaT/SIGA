@@ -19,6 +19,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from m_user.urls import urlpatterns as urlUser
+from m_admision.urls import urlpatterns as urlAdmision
 from .views import (
     mostrar_inicio,
     mostrar_contacto,
@@ -43,6 +44,7 @@ urlpatterns = [
     path("asistencia-alumno/", asistencia_alumno, name="asistencia-alumno"),
     path("cursos/", listar_curso, name="cursos"),
     path("", include(urlUser)),
+    path("", include( urlAdmision)),
     path("admin/", admin.site.urls),
 ]
 
