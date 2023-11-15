@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import TipoUsuario, Usuario, Apoderado, Estudiante
 
-# Register your models here.
+admin.site.register(TipoUsuario)
+admin.site.register(Usuario)
+admin.site.register(Apoderado)
+admin.site.register(Estudiante)
