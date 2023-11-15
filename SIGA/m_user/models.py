@@ -22,7 +22,7 @@ class TipoUsuario(Model):
         db_table = "Tipo_usuario"
 
     def __str__(self):
-        return {self.tipo}
+        return f"{self.tipo}"
 
 
 class Usuario(Model):
@@ -35,7 +35,7 @@ class Usuario(Model):
     fec_nac = DateField()
     nacionalidad = CharField(max_length=20)
     direccion = CharField(max_length=100)
-    genero = CharField(max_length=9, choices=lista_generos)
+    genero = IntegerField(choices=lista_generos)
     email = EmailField(unique=True)
     numero = IntegerField()
 
