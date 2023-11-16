@@ -7,8 +7,10 @@ from django.db.models import (
     ForeignKey,
     BigAutoField,
     CASCADE,
+    OneToOneField
 )
-from django.core.validators import MinLengthValidator, MaxLengthValidator
+from django.core.validators import MaxValueValidator, MaxLengthValidator, MinLengthValidator, MinValueValidator
+from django.utils import timezone
 
 lista_generos = [
     [0, "Femenino"],
@@ -17,41 +19,23 @@ lista_generos = [
 ]
 
 
-### Tabla Usuario
-class Usuario(Model):
-    id_usuario = BigAutoField(primary_key=True)
-
-    class Meta:
-        db_table = "Usuario"
-
-    def __str__(self):
-        return f"{self.id_usuario}"
-
-
 ### Tabla Apoderado
 class Apoderado(Model):
-    num_rut = IntegerField(primary_key=True)
-    dv = CharField(max_length=1)
-    usuario = ForeignKey(Usuario, on_delete=CASCADE, null=True, blank=True)
-    pnombre = CharField(max_length=30)
+    num_rut = IntegerField(primary_key=True,validators=[MaxValueValidator(49999999), MinValueValidator(10000000)])
+    dv = CharField(max_length=1, null=False)
+    pnombre = CharField(max_length=30, null=False)
     snombre = CharField(max_length=30, blank=True, null=True)
-    appat = CharField(max_length=30)
-    apmat = CharField(max_length=30)
-    fec_nac = DateField()
+    appat = CharField(max_length=30, null=False)
+    apmat = CharField(max_length=30, null=False)
+    fec_nac = DateField(validators=[MaxValueValidator(limit_value=timezone.now().date())])
     nacionalidad = CharField(max_length=20)
     direccion = CharField(max_length=100)
     genero = IntegerField(choices=lista_generos)
-    email = EmailField(unique=True)
-    numero = IntegerField()
+    email = EmailField(unique=True, null=False)
+    numero = IntegerField(null=False)
 
     class Meta:
         db_table = "Apoderado"
-
-    def save(self, *args, **kwargs):
-        if not self.usuario:
-            usuario = Usuario.objects.create()
-            self.usuario = usuario
-        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.num_rut}-{self.dv} {self.pnombre} {self.appat} {self.apmat}"
@@ -59,10 +43,8 @@ class Apoderado(Model):
 
 ### Tabla Estudiante
 class Estudiante(Model):
-    num_rut = IntegerField(primary_key=True)
+    num_rut = IntegerField(primary_key=True, validators=[MaxValueValidator(49999999), MinValueValidator(10000000)])
     dv = CharField(max_length=1)
-    usuario = ForeignKey(Usuario, on_delete=CASCADE, null=True, blank=True)
-    Apoderado = ForeignKey(Apoderado, on_delete=CASCADE)
     pnombre = CharField(max_length=30)
     snombre = CharField(max_length=30, blank=True, null=True)
     appat = CharField(max_length=30)
@@ -74,15 +56,31 @@ class Estudiante(Model):
     email = EmailField(unique=True)
     numero = IntegerField()
     parentezco = CharField(max_length=10)
+    apoderado = ForeignKey(Apoderado, on_delete=CASCADE)
 
     class Meta:
         db_table = "Estudiante"
 
-    def save(self, *args, **kwargs):
-        if not self.usuario:
-            usuario = Usuario.objects.create()
-            self.usuario = usuario
-        super().save(*args, **kwargs)
+    def __str__(self):
+        return f"{self.num_rut}-{self.dv} {self.pnombre} {self.appat} {self.apmat} {self.apoderado.num_rut}"
+
+
+### Tabla Usuario
+class Usuario(Model):
+    id_usuario = BigAutoField(primary_key=True)
+    contraseña = CharField(max_length=12)
+    apoderado = OneToOneField(Apoderado, on_delete=CASCADE, related_name='usuario_apoderado', related_query_name='usuario_apoderado', null=True, blank=True)
+    estudiante = OneToOneField(Estudiante, on_delete=CASCADE, related_name='usuario_estudiante', related_query_name='usuario_estudiante', null=True, blank=True)
+
+    class Meta:
+        db_table = "Usuario"
 
     def __str__(self):
-        return f"{self.num_rut}-{self.dv} {self.pnombre} {self.appat} {self.apmat}"
+        if self.apoderado:
+            nombre = self.apoderado.pnombre
+        elif self.estudiante:
+            nombre = self.estudiante.pnombre
+        else:
+            nombre = "Usuario sin asociar a Apoderado o Estudiante"
+
+        return f"{self.id_usuario} {nombre}"
