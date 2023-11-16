@@ -7,6 +7,10 @@ from django.db.models import (
     ForeignKey,
     CASCADE,
 )
+from django.core.validators import (
+    MinLengthValidator,
+    MaxLengthValidator
+)
 
 lista_generos = [
     [0, "Femenino"],
@@ -14,7 +18,7 @@ lista_generos = [
     [2, "No aplica"],
 ]
 
-
+### Tabla TipoUsuario
 class TipoUsuario(Model):
     tipo = CharField(max_length=15)
 
@@ -24,7 +28,7 @@ class TipoUsuario(Model):
     def __str__(self):
         return f"{self.tipo}"
 
-
+### Tabla Usuario
 class Usuario(Model):
     num_rut = IntegerField(primary_key=True)
     dv = CharField(max_length=1)
@@ -45,7 +49,7 @@ class Usuario(Model):
     def __str__(self):
         return f"{self.num_rut}-{self.dv}"
 
-
+### Tabla Apoderado
 class Apoderado(Model):
     tipo = ForeignKey(TipoUsuario, on_delete=CASCADE)
     usuario = ForeignKey(Usuario, on_delete=CASCADE)
@@ -56,7 +60,7 @@ class Apoderado(Model):
     def __str__(self):
         return f"{self.usuario.num_rut}-{self.usuario.dv}"
 
-
+### Tabla Estudiante
 class Estudiante(Model):
     tipo = ForeignKey(TipoUsuario, on_delete=CASCADE)
     usuario = ForeignKey(Usuario, on_delete=CASCADE)

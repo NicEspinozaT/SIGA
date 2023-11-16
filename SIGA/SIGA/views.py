@@ -9,9 +9,6 @@ def mostrar_contacto(request):
 def mostrar_nosotros(request):
     return render(request, "informacion/sobre_nosotros.html")
 
-def matricula(request):
-    return render(request, "matricula/matricula.html")
-
 def listar_evaluaciones(request):
     return render(request, "informacion/listarEvaluaciones.html")
 
