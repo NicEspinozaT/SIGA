@@ -6,187 +6,95 @@ Matrícula
 {% endblock title %} 
 
 {% block content %}
-<h1 class="text-center">Formulario de Matrícula</h1><br>
-<form>
-  <main class="container">
-    <!-- Ingreso de los datos del alumno -->
-    <h2 class="text-center">Registrar Alumno</h2>
-    <section class="row">
-        <legend>Datos Personales</legend>
-        <fieldset class="col-10">
-            <div class="row p-2">
-                <div class="col-5">
-                    <label for="run">RUN:</label>
-                    <input type="text" id="run" name="run" required placeholder="Sin puntos ej: 13456897">
-                </div>
-                <div class="col-5">
-                    <label for="dvrun">DV:</label>
-                    <input type="text" id="dvrun" name="dvrun">
-                </div>
-            </div>
-            <div class="row p-2">
-                <div class="col-5">
-                    <label for="pnombre">Primer Nombre:</label>
-                    <input type="text" id="pnombre" name="pnombre" required>
-                </div>
-                <div class="col-5">
-                    <label for="snombre">Segundo Nombre:</label>
-                    <input type="text" id="snombre" name="snombre" required>
-                </div>
-            </div>
-            <div class="row p-2">
-                <div class="col-5">
-                    <label for="appaterno">Apellido Paterno:</label>
-                    <input type="text" id="appaterno" name="appaterno" required>
-                </div>
-                <div class="col-5">
-                    <label for="apmaterno">Apellido Materno</label>
-                    <input type="text" name="apmaterno" id="apmaterno" required>
-                </div>
-            </div>
-            <div class="row p-2">
-                <div class="col-5">
-                    <label for="fecha_nac">Fecha de Nacimiento</label>
-                    <input type="date" name="fecha_nac" id="fecha_nac" required>
-                </div>
-                <div class="col-5">
-                    <label for="genero">Género</label>
-                    <input type="text" name="genero" id="genero" required>
-                </div>
-            </div>
-        </fieldset>
-        <legend>Datos de Contacto</legend>
-        <fieldset class="col-10">
-          <div class="row p-2">
-            <div class="col-5">
-                <label for="direccion">Direccion:</label>
-                <input type="text" id="direccion" name="direccion" required placeholder="ej: Calle Las Canteras pasaje 1, EL Bosque.">
-            </div>
-            <div class="col-5">
-                <label for="dvrun">Email:</label>
-                <input type="email" id="email" name="email">
-            </div>
-          </div>
-          <div class="row p-2">
-            <div class="col-5">
-              <label for="num_telef">Numero de Teléfono</label>
-            <input type="number" name="num_telef" id="num_telef">
-            </div>
-          </div>
-        </fieldset>
-    </section>
-    <br>
-    <!-- Ingreso de los datos del apoderado -->
-    <h2 class="text-center">Registrar Apoderado</h2>
-    <section class="row">
-      <legend>Datos Personales</legend>
-      <fieldset class="col-10">
-        <div class="row p-2">
-          <div class="col-5">
-            <label for="run">RUN:</label>
-            <input type="text" name="run" id="run" placeholder="Sin puntos ej: 15364789" required>
-          </div>
-          <div class="col-5">
-            <label for="dvrun">DV:</label>
-            <input type="text" name="dvrun" id="dvrun"
-            required>
-          </div>
-        </div>
-        <div class="row p-2">
-          <div class="col-5">
-            <label for="pnombre">Primer Nombre</label>
-            <input type="text" name="pnombre" id="pnombre" required>
-          </div>
-          <div class="col-5">
-            <label for="snombre">Segundo Nombre:</label>
-            <input type="text" name="snombre" id="snombre" required>
-          </div>
-        </div>
-        <div class="row p-2">
-          <div class="col-5">
-            <label for="appaterno">Apellido Paterno</label>
-            <input type="text" name="appaterno" id="appaterno" required>
-          </div>
-          <div class="col-5">
-            <label for="apmaterno">Apellido Materno</label>
-            <input type="text" name="apmaterno" id="apmaterno" required>
-          </div>
-        </div>
-        <div class="row p-2">
-          <div class="col-5">
-            <label for="fecha_nac">Fecha de Nacimiento:</label>
-            <input type="date" name="fecha_nac" id="fecha_nac" required>
-          </div>
-          <div class="col-5">
-            <label for="genero">Género:</label>
-            <input type="text" name="genero" id="genero" required>
-          </div>
-        </div>
-        <div class="row p-2">
-          <div class="col-5">
-            <label for="parentezco">Parentezco:</label>
-            <input type="text" name="parentezco" id="parentezco" required>
-          </div>
-        </div>
-      </fieldset>
-      <legend>Datos de Contacto</legend>
-      <fieldset class="col-10">
-        <div class="row p-2">
-          <div class="col-5">
-            <label for="direccion">Dirección:</label>
-            <input type="text" name="direccion" id="direccion" required>
-          </div>
-          <div class="col-5">
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" required>
-          </div>
-        </div>
-        <div class="row p-2">
-          <div class="col-5">
-            <label for="num_telef">Número de Teléfono:</label>
-            <input type="number" name="num_telef" id="num_telef" required>
-          </div>
-          <div class="col-5">
-            <label for="num_telef_emerg">Número de Teléfono Emerg.:</label>
-            <input type="number" name="num_telef_emerg" id="num_telef_emerg">
-          </div>
-        </div>
-      </fieldset>
-    </section>
-    <br>
-    <!-- Ingreso de los datos generales de matricula -->
-    <h2 class="text-center">Datos Generales</h2>
-    <section class="row">
-      <fieldset class="col-10">
-        <div class="row p-2">
-          <div class="col-5">
-            <label for="periodo">Periodo de Matrícula</label>
-            <input type="text" name="periodo" id="periodo" required>
-          </div>
-          <div class="col-5">
-            <label for="estado">Estado de matrícula</label>
-            <input type="text" name="estado" id="estado" required>
-          </div>
-        </div>
-        <div class="row p-2">
-          <div class="col-5">
-            <label for="anio">Año académico</label>
-            <input type="number" name="anio" id="anio" required>
-          </div>
-          <div class="col-5">
-            <label for="curso">Curso alumno</label>
-            <input type="text" name="curso" id="curso">
-          </div>
-        </div>
-      </fieldset>
-      <fieldset class="col-10">
-        <div class="row p-2">
-          <button class="button align-item-start col-3" type="button" >Confirmar</button>
-          <button class="button offset-3 col-3" type="button" >Cancelar</button>
-        </div>
-      </fieldset>
-    </section>
-  </main>
+<div class="container mt-5">
+    <form class="form" method="POST" action="{% url 'matricula' %}">
+      {% csrf_token %}
+      
+      <!-- Num Rut -->
+      <div class="form-group">
+        <label class="form-label" for="num_rut">Número Rut</label>
+        <input type="number" class="form-control" id="num_rut" name="num_rut" placeholder="Sin puntos ni guión" required>
+      </div>
   
-</form>
+      <!-- Dv -->
+      <div class="form-group">
+        <label class="form-label" for="dv">Dígito Verificador</label>
+        <input type="text" class="form-control" id="dv" name="dv" required>
+      </div>
+  
+      <!-- Pnombre -->
+      <div class="form-group">
+        <label class="form-label" for="pnombre">Primer Nombre</label>
+        <input type="text" class="form-control" id="pnombre" name="pnombre" placeholder="{form_apod.pnombre}" required>
+      </div>
+  
+      <!-- Snombre -->
+      <div class="form-group">
+        <label class="form-label" for="snombre">Segundo Nombre</label>
+        <input type="text" class="form-control" id="snombre" name="snombre" placeholder="Segundo nombre">
+      </div>
+  
+      <!-- Appat -->
+      <div class="form-group">
+        <label class="form-label" for="appat">Apellido Paterno</label>
+        <input type="text" class="form-control" id="appat" name="appat" placeholder="Apellido paterno" required>
+      </div>
+  
+      <!-- Apmat -->
+      <div class="form-group">
+        <label class="form-label" for="apmat">Apellido Materno</label>
+        <input type="text" class="form-control" id="apmat" name="apmat" placeholder="Apellido materno" required>
+      </div>
+  
+      <!-- Fec Nac -->
+      <div class="form-group">
+        <label class="form-label" for="fec_nac">Fecha de Nacimiento</label>
+        <input type="date" class="form-control" id="fec_nac" name="fec_nac" required>
+      </div>
+  
+      <!-- Nacionalidad -->
+      <div class="form-group">
+        <label class="form-label" for="nacionalidad">Nacionalidad</label>
+        <input type="text" class="form-control" id="nacionalidad" name="nacionalidad" required>
+      </div>
+  
+      <!-- Direccion -->
+      <div class="form-group">
+        <label class="form-label" for="direccion">Dirección</label>
+        <input type="text" class="form-control" id="direccion" name="direccion" placeholder="ej: Calle Esparta 25, comuna La Granja" required>
+      </div>
+  
+      <!-- Genero -->
+      <div class="form-group">
+        <label class="form-label" for="genero">Género</label>
+        <select class="form-control" id="genero" name="genero" required>
+          <option value="0">Femenino</option>
+          <option value="1">Masculino</option>
+          <option value="2">No aplica</option>
+        </select>
+      </div>
+  
+      <!-- Email -->
+      <div class="form-group">
+        <label class="form-label" for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="example@gmail.com" required>
+      </div>
+  
+      <!-- Numero -->
+      <div class="form-group">
+        <label class="form-label" for="numero">Número</label>
+        <input type="number" class="form-control" id="numero" name="numero" required>
+      </div>
+  
+      <!-- Botón de Enviar -->
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+  </div>
+
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock js %}
+
 {% endblock content %}

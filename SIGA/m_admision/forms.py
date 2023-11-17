@@ -17,7 +17,7 @@ class FormularioApoderado(ModelForm):
   class Meta:
     model = Apoderado
     fields = [
-      "num_run",
+      "num_rut",
       "dv",
       "pnombre",
       "snombre",
@@ -31,23 +31,16 @@ class FormularioApoderado(ModelForm):
       "numero",
     ]
     widgets = {
-      "num_run": NumberInput(
-        attrs = {
-        "class":"form-control",
-        "placeholder":"Ingrese rut sin puntos ni guión"
-      }),
-      "dv" : TextInput(
-        attrs={
-          "class" : "form-control"
-      }),
-      "pnombre" : TextInput,
-      "snombre" : TextInput,
-      "appat" : TextInput,
-      "apmat" : TextInput,
-      "fec_nac" : DateInput,
-      "nacionalidad" : TextInput,
-      "direccion" : TextInput,
-      "genero" : Select,
-      "email" : EmailInput,
-      "numero" : NumberInput,
+      "num_rut": NumberInput(attrs={"class": "form-control", "placeholder": "Sin puntos ni guión"}),
+      "dv": TextInput(attrs={"class": "form-control"}),
+      "pnombre": TextInput(attrs={"class": "form-control", "placeholder": "Primer nombre"}),
+      "snombre": TextInput(attrs={"class": "form-control", "placeholder": "Segundo nombre"}),
+      "appat": TextInput(attrs={"class": "form-control", "placeholder": "Apellido paterno"}),
+      "apmat": TextInput(attrs={"class": "form-control", "placeholder": "Apellido materno"}),
+      "fec_nac": DateInput(attrs={"class": "form-control"}),
+      "nacionalidad": TextInput(attrs={"class": "form-control"}),
+      "direccion": TextInput(attrs={"class": "form-control", "placeholder": "ej: Calle Esparta 25, comuna La Granja"}),
+      "genero": Select(attrs={"class": "form-control"}),
+      "email": EmailInput(attrs={"class": "form-control", "placeholder": "example@gmail.com"}),
+      "numero": NumberInput(attrs={"class": "form-control"}),
     }
