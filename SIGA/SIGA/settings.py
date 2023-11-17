@@ -58,9 +58,7 @@ ROOT_URLCONF = "SIGA.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [
-          join(BASE_DIR, "templates")
-        ],
+        "DIRS": [join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -130,4 +128,12 @@ STATICFILES_DIRS = [join(BASE_DIR, "assets")]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
+SWEETIFY_SWEETALERT_LIBRARY = "sweetalert2"
+
+# Configuracion de correo electronico
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "nicolasespinoza1985@gmail.com"  # Tu dirección de Gmail
+EMAIL_HOST_PASSWORD = "Chevoce1985"  # Tu contraseña de Gmail
