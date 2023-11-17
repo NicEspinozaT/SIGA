@@ -10,6 +10,7 @@ from django.db.models import (
 from django.core.validators import MinLengthValidator, MaxLengthValidator
 import secrets
 import string
+from django.contrib.auth.hashers import make_password
 from django.core.mail import send_mail
 
 lista_generos = [
@@ -41,15 +42,15 @@ class Apoderado(Model):
     def save(self, *args, **kwargs):
         if not self.contrasenia:  # Si es un nuevo registro
             pass_usuario = self.generar_contrasenia_aleatoria()
-            # send_mail(
-            #     "Holiiii!!! Tu pass es: ",
-            #     f"{pass_usuario}",
-            #     "nicolasespinoza1985@gmail.com",
-            #     [self.email],
-            #     fail_silently=False,
-            # )
+            send_mail(
+                "Contraseña de acceso sistema SIGA",
+                f"Tu contraseña temporal es: {pass_usuario}",
+                "siga.educacion@gmail.com",
+                [self.email],
+                fail_silently=False,
+            )
 
-            self.contrasenia = pass_usuario
+            self.contrasenia = make_password(pass_usuario)
         super().save(*args, **kwargs)
 
     @staticmethod
@@ -65,7 +66,7 @@ class Apoderado(Model):
 class Estudiante(Model):
     num_rut = IntegerField(primary_key=True)
     dv = CharField(max_length=1)
-    contrasenia = CharField(max_length=8)
+    contrasenia = CharField(max_length=128, null=True, blank=True)
     apoderado = ForeignKey(Apoderado, on_delete=CASCADE)
     pnombre = CharField(max_length=30)
     snombre = CharField(max_length=30, blank=True, null=True)
@@ -83,8 +84,17 @@ class Estudiante(Model):
         db_table = "Estudiante"
 
     def save(self, *args, **kwargs):
-        if not self.pk:  # Si es un nuevo registro
-            self.contrasenia = self.generar_contrasenia_aleatoria()
+        if not self.contrasenia:  # Si es un nuevo registro
+            pass_usuario = self.generar_contrasenia_aleatoria()
+            send_mail(
+                "Contraseña de acceso sistema SIGA",
+                f"Tu contraseña temporal es: {pass_usuario}",
+                "siga.educacion@gmail.com",
+                [self.email],
+                fail_silently=False,
+            )
+
+            self.contrasenia = make_password(pass_usuario)
         super().save(*args, **kwargs)
 
     @staticmethod
