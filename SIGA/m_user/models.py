@@ -11,6 +11,8 @@ from django.db.models import (
 )
 from django.core.validators import MaxValueValidator, MaxLengthValidator, MinLengthValidator, MinValueValidator
 from django.utils import timezone
+### Para darle validaciones propias al método clean
+from django.core.exceptions import ValidationError
 
 lista_generos = [
     [0, "Femenino"],
@@ -84,3 +86,10 @@ class Usuario(Model):
             nombre = "Usuario sin asociar a Apoderado o Estudiante"
 
         return f"{self.id_usuario} {nombre}"
+    
+    ### método modificado para las validaciones de las foreing keys de usuario
+    def clean(self):
+        if not self.apoderado and not self.estudiante:
+            raise ValidationError('Debe asociar un Apoderado o un Estudiante al usuario.')
+        if self.apoderado and self.estudiante:
+            raise ValidationError('Sólo puede asociar un Apoderado o un Estudiante al usuario.')
