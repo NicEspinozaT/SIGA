@@ -43,9 +43,9 @@ class Apoderado(Model):
         if not self.contrasenia:  # Si es un nuevo registro
             pass_usuario = self.generar_contrasenia_aleatoria()
             send_mail(
-                "Holiiii!!! Tu pass es: ",
-                f"{pass_usuario}",
-                "nicolasespinoza1985@gmail.com",
+                "Contraseña de acceso sistema SIGA",
+                f"Tu contraseña temporal es: {pass_usuario}",
+                "siga.educacion@gmail.com",
                 [self.email],
                 fail_silently=False,
             )
@@ -87,9 +87,9 @@ class Estudiante(Model):
         if not self.contrasenia:  # Si es un nuevo registro
             pass_usuario = self.generar_contrasenia_aleatoria()
             send_mail(
-                "Holiiii!!! Tu pass es: ",
-                f"{pass_usuario}",
-                "nicolasespinoza1985@gmail.com",
+                "Contraseña de acceso sistema SIGA",
+                f"Tu contraseña temporal es: {pass_usuario}",
+                "siga.educacion@gmail.com",
                 [self.email],
                 fail_silently=False,
             )
