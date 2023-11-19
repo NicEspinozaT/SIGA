@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %} 
+{% load static %} 
+{% block title %}
+Agregar Asignatura
+{% endblock title %}
+
+
+{% block content %}
+<h2>Agregar Asignatura al Curso: {{ curso.get_nivel_display }} Sección: {{ curso.get_seccion_display }}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Agregar Asignatura</button>
+</form>
+{% endblock %}

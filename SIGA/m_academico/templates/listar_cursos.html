@@ -7,26 +7,17 @@ Cursos
 {% block content %}
 
 <a class="btn btn-outline-info" href="{% url 'agregar_curso' %}" role="button"
-  >Link</a
+  >Agregar Curso +</a
 >
-
-<h2>Lista de Cursos</h2>
-<ul>
+<div class="list-group">
   {% for curso in cursos %}
-  <li>{{ curso.nivel }} {{ curso.seccion }} - Año: {{ curso.periodo }}</li>
-  {% empty %}
-  <li>No hay cursos disponibles.</li>
-  {% endfor %}
-</ul>
-
-<!-- <div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-      The current link item
+    <a href="{% url 'lista_asignaturas' curso.id %}" class="list-group-item list-group-item-action" aria-current="true">
+      {{ curso.get_nivel_display }} {{ curso.get_seccion_display }} - Año: {{ curso.periodo }}
     </a>
-    <a href="#" class="list-group-item list-group-item-action">A second link item</a>
-    <a href="#" class="list-group-item list-group-item-action">A third link item</a>
-    <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
-    <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">A disabled link item</a>
-  </div> -->
+      {% empty %}
+        <li>No hay cursos disponibles.</li>
+      {% endfor %}   
+</div>
+  
 
 {% endblock %}

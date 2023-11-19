@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %} 
+{% load static %} 
+{% block title %}
+Asignaturas
+{% endblock title %}
+
+{% block content %}
+<h2>
+  Curso: {{ curso.get_nivel_display }} Sección: {{ curso.get_seccion_display }}
+</h2>
+<a
+  class="btn btn-outline-info"
+  href="{% url 'agregar_asignatura' curso.id%}"
+  role="button"
+  >Agregar Asignatura +</a
+>
+
+<h3>Asignaturas:</h3>
+<ul>
+  {% for asignatura in asignaturas %}
+  <li>
+    {{ asignatura.get_nombre_display }} - {{ asignatura.get_sigla_display }}
+  </li>
+  {% empty %}
+  <li>No hay asignaturas asignadas a este curso.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
