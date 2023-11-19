@@ -1,8 +1,43 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.hashers import check_password
+from .forms import LoginForm
+from .models import Apoderado, Estudiante
+from sweetify import success
 
 
 def login(request):
-    return render(request, "login.html")
+    if request.method == "POST":
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            num_rut = form.cleaned_data["num_rut"]
+            contrasenia = form.cleaned_data["contrasenia"]
+
+            # Busca en Apoderado
+            try:
+                user = Apoderado.objects.get(num_rut=num_rut)
+            except Apoderado.DoesNotExist:
+                user = None
+
+            # Si no se encuentra en Apoderado, busca en Estudiante
+            if not user:
+                try:
+                    user = Estudiante.objects.get(num_rut=num_rut)
+                except Estudiante.DoesNotExist:
+                    user = None
+
+            # Verifica la contraseña
+            if user and check_password(contrasenia, user.contrasenia):
+                # Aquí debes manejar el inicio de sesión
+                login(request, user),
+                success(request, f"Bienvenido {user.pnombre} {user.appat}")
+                # Por ejemplo, puedes establecer una sesión o redirigir
+                return redirect("home")
+            else:
+                form.add_error(None, "Número de RUT o contraseña incorrectos.")
+    else:
+        form = LoginForm()
+
+    return render(request, "login.html", {"form": form})
 
 
 def vistaAlumno(request):

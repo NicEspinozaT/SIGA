@@ -5,35 +5,33 @@ Login
 {%endblock title %} 
 {% block content %}
 <main class="container">
-  
-  <form>
-    
-    <div class="mb-3 col-6 offset-3 form-group">
-      <h3>Inicio de sesión</h3>
-      <label for="rut">Rut:</label>
-      <input
-        type="text"
-        class="form-control"
-        id="rut"
-        placeholder="Ingresa tu Rut"
-      />
-      <div id="rutHelp" class="form-text">Ej: 12345678-9</div>
+  <form method="POST">
+    {% csrf_token %}
+    <div
+      class="mb-1 offset-md-4 col-md-4"
+      style="display: flex; justify-content: center; align-items: center"
+    >
+      <h1>Iniciar sesión</h1>
     </div>
-
-    <div class="mb-3 col-6 offset-3">
-      <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" />
+    <!-- ingresar rut -->
+    <div class="mb-1 offset-md-4 col-md-4">
+      <label class="form-label m-2">{{form.num_rut.label}}</label>
+      {{form.num_rut}}
+      <div id="emailHelp" class="form-text">{{form.num_rut.help_text}}</div>
     </div>
-    <div class="mb-3 col-6 offset-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-      <label class="form-check-label" for="exampleCheck1">Recordar</label>
-      <br>
-      <a href="{% url 'solicitarContraseña' %}">Solicitar contraseña</a>
+    <!-- ingresar contraseña -->
+    <div class="mb-1 offset-md-4 col-md-4">
+      <label class="form-label m-2">{{form.contrasenia.label}}</label>
+      {{form.contrasenia}}
     </div>
-    
-    <a href="{% url 'mostrar_inicio' %}"class="btn btn-primary offset-3">
-        Iniciar Sesión
-    </a>
+    <!-- boton de inicio -->
+    <button
+      type="submit"
+      role="submit"
+      class="btn btn-primary offset-md-4 col-md-4"
+    >
+      Iniciar
+    </button>
   </form>
 </main>
 {% endblock content %}

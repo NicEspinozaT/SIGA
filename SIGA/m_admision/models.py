@@ -1,16 +1,13 @@
 from django.db.models import (
-  Model,
-  CharField,
-  IntegerField,
-  DateTimeField,
-  BigAutoField,
-  ForeignKey,
-  CASCADE,
+    Model,
+    CharField,
+    IntegerField,
+    DateTimeField,
+    BigAutoField,
+    ForeignKey,
+    CASCADE,
 )
-from m_user.models import (
-  Apoderado,
-  Estudiante,
-)
+from m_user.models import Apoderado, Estudiante, lista_generos
 from django.utils import timezone
 
 op_estados = [
@@ -19,16 +16,17 @@ op_estados = [
     [2, "Pagado"],
 ]
 
+
 class Matricula(Model):
-  id = BigAutoField (primary_key=True)
-  estado = IntegerField(choices=op_estados, null=False)
-  fecha = DateTimeField(auto_now_add=True, null=False)
-  periodo = IntegerField (default=timezone.now().year, null=False)
-  Apoderado = ForeignKey(Apoderado, on_delete=CASCADE)
-  Estudiante = ForeignKey(Estudiante, on_delete=CASCADE)
+    id = BigAutoField(primary_key=True)
+    estado = IntegerField(choices=op_estados, null=False)
+    fecha = DateTimeField(auto_now_add=True, null=False)
+    periodo = IntegerField(default=timezone.now().year, null=False)
+    Apoderado = ForeignKey(Apoderado, on_delete=CASCADE)
+    Estudiante = ForeignKey(Estudiante, on_delete=CASCADE)
 
-  class Meta:
-    db_table = "Matricula"
+    class Meta:
+        db_table = "Matricula"
 
-  def __str__(self):
-    return f"{self.id}"
+    def __str__(self):
+        return f"{self.id}"

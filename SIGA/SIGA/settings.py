@@ -130,6 +130,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 SWEETIFY_SWEETALERT_LIBRARY = "sweetalert2"
 
+# backend de autentificacion personalizado
+
+AUTHENTICATION_BACKENDS = ["m_user.backends.BackendCustomAuth"]
+
+
 # Configuracion de correo electronico
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
