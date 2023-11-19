@@ -6,6 +6,7 @@ from django.db.models import (
     DateField,
     EmailField,
     ForeignKey,
+    ManyToManyField,
     CASCADE,
     DateTimeField,
 )

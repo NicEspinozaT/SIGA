@@ -8,7 +8,7 @@ from django.forms import (
     EmailInput,
     CheckboxInput,
 )
-from .models import Matricula, Apoderado, Estudiante, lista_generos
+from .models import Apoderado, Estudiante
 
 
 class FormularioApoderado(ModelForm):
@@ -62,7 +62,6 @@ class FormularioApoderado(ModelForm):
 
 
 class FormularioEstudiante(ModelForm):
-
     class Meta:
         model = Estudiante
         fields = [
@@ -84,9 +83,7 @@ class FormularioEstudiante(ModelForm):
             "num_rut": NumberInput(
                 attrs={"class": "form-control", "placeholder": "Sin puntos ni guión"}
             ),
-            "dv": TextInput(
-                attrs={"class": "form-control"}
-            ),
+            "dv": TextInput(attrs={"class": "form-control"}),
             "pnombre": TextInput(
                 attrs={"class": "form-control", "placeholder": "Primer nombre"}
             ),
@@ -99,28 +96,18 @@ class FormularioEstudiante(ModelForm):
             "apmat": TextInput(
                 attrs={"class": "form-control", "placeholder": "Apellido materno"}
             ),
-            "fec_nac": DateInput(
-                attrs={"class": "form-control"}
-            ),
-            "nacionalidad": TextInput(
-                attrs={"class": "form-control"}
-            ),
+            "fec_nac": DateInput(attrs={"class": "form-control"}),
+            "nacionalidad": TextInput(attrs={"class": "form-control"}),
             "direccion": TextInput(
                 attrs={
                     "class": "form-control",
                     "placeholder": "ej: Calle Esparta 25, comuna La Granja",
                 }
             ),
-            "genero": Select(
-                attrs={"class": "form-control"}
-            ),
+            "genero": Select(attrs={"class": "form-control"}),
             "email": EmailInput(
                 attrs={"class": "form-control", "placeholder": "example@gmail.com"}
             ),
-            "numero": NumberInput(
-                attrs={"class": "form-control"}
-            ),
-            "parentezco": TextInput(
-                attrs={"class":"form-control"}
-            )
+            "numero": NumberInput(attrs={"class": "form-control"}),
+            "parentezco": TextInput(attrs={"class": "form-control"}),
         }

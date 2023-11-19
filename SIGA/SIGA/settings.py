@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "m_user",
     "m_admision",
     "m_administracion",
+    "m_academico",
 ]
 
 MIDDLEWARE = [
@@ -137,7 +138,6 @@ AUTHENTICATION_BACKENDS = [
     "SIGA.backends.CustomAuthUser",
     "SIGA.backends.CustomAuthAdmin",
 ]
-
 
 
 # Configuracion de correo electronico
