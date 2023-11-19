@@ -6,5 +6,10 @@ Inicio
 {% endblock title %}
 
 {% block content %} 
-<h1>Sistema Informatico de Gestión Academica SIGA</h1>
+{% if request.session.tipo_usuario == 'apoderado' %}
+<h1>Apoderado</h1>
+
+{% elif request.session.tipo_usuario == 'estudiante' %}
+<h1>Estudiante</h1>
+{% endif %}
 {% endblock content %}

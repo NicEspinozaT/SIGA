@@ -1,6 +1,6 @@
 from django.contrib.auth.backends import BaseBackend
 from django.contrib.auth.hashers import check_password
-from .models import Apoderado, Estudiante
+from .models import Apoderado, Estudiante, Docente
 
 
 class BackendCustomAuth(BaseBackend):
@@ -21,6 +21,14 @@ class BackendCustomAuth(BaseBackend):
         except Estudiante.DoesNotExist:
             pass
 
+        # Buscar en Docente
+        try:
+            user = Docente.objects.get(num_rut=num_rut)
+            if check_password(contrasenia, user.contrasenia):
+                return user
+        except Docente.DoesNotExist:
+            pass
+
         return None
 
     def get_user(self, user_id):
@@ -30,4 +38,7 @@ class BackendCustomAuth(BaseBackend):
             try:
                 return Estudiante.objects.get(pk=user_id)
             except Estudiante.DoesNotExist:
-                return None
+                try:
+                    return Docente.objects.get(pk=user_id)
+                except Docente.DoesNotExist:
+                    return None

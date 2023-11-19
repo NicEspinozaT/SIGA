@@ -12,7 +12,10 @@ from .models import Matricula, Apoderado, Estudiante, lista_generos
 
 
 class FormularioApoderado(ModelForm):
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e2413458cfd8a71a3a43e20bdc640d418457c3a
     class Meta:
         model = Apoderado
         fields = [
@@ -46,7 +49,7 @@ class FormularioApoderado(ModelForm):
             "apmat": TextInput(
                 attrs={"class": "form-control", "placeholder": "Apellido materno"}
             ),
-            "fec_nac": DateInput(attrs={"class": "form-control"}),
+            "fec_nac": DateInput(attrs={"class": "form-control", "type": "date"}),
             "nacionalidad": TextInput(attrs={"class": "form-control"}),
             "direccion": TextInput(
                 attrs={
