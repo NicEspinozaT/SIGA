@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.db.models import (
     Model,
     IntegerField,
@@ -6,6 +7,7 @@ from django.db.models import (
     EmailField,
     ForeignKey,
     CASCADE,
+    DateTimeField
 )
 from django.core.validators import MinLengthValidator, MaxLengthValidator
 import secrets
@@ -35,6 +37,7 @@ class Apoderado(Model):
     genero = IntegerField(choices=lista_generos)
     email = EmailField(unique=True)
     numero = IntegerField()
+    last_login = DateTimeField("last login", default=timezone.now)
 
     class Meta:
         db_table = "Apoderado"

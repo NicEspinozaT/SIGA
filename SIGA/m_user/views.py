@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import login
 from django.contrib.auth.hashers import check_password
 from .forms import LoginForm
 from .models import Apoderado, Estudiante
 from sweetify import success
 
 
-def login(request):
+def vista_login(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -27,11 +28,9 @@ def login(request):
 
             # Verifica la contraseña
             if user and check_password(contrasenia, user.contrasenia):
-                # Aquí debes manejar el inicio de sesión
-                login(request, user),
+                login(request, user)
                 success(request, f"Bienvenido {user.pnombre} {user.appat}")
-                # Por ejemplo, puedes establecer una sesión o redirigir
-                return redirect("home")
+                return redirect("mostrar_inicio")
             else:
                 form.add_error(None, "Número de RUT o contraseña incorrectos.")
     else:
