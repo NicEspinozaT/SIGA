@@ -12,8 +12,6 @@ from .models import Matricula, Apoderado, Estudiante, lista_generos
 
 
 class FormularioApoderado(ModelForm):
-    genero = ChoiceField(choices=lista_generos)
-
     class Meta:
         model = Apoderado
         fields = [
@@ -47,7 +45,7 @@ class FormularioApoderado(ModelForm):
             "apmat": TextInput(
                 attrs={"class": "form-control", "placeholder": "Apellido materno"}
             ),
-            "fec_nac": DateInput(attrs={"class": "form-control"}),
+            "fec_nac": DateInput(attrs={"class": "form-control", "type": "date"}),
             "nacionalidad": TextInput(attrs={"class": "form-control"}),
             "direccion": TextInput(
                 attrs={
