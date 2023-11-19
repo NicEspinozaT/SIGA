@@ -10,13 +10,12 @@ from django.db.models import (
     DateTimeField,
 )
 from django.core.validators import MinLengthValidator, MaxLengthValidator
-import secrets
-import string
+import secrets, string
 from django.contrib.auth.hashers import make_password
 from django.core.mail import send_mail
 
 lista_generos = [
-    [-1,"Seleccione género"],
+    [-1, "Seleccione género"],
     [0, "Femenino"],
     [1, "Masculino"],
     [2, "No aplica"],

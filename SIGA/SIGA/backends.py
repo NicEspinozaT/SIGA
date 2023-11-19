@@ -1,9 +1,10 @@
 from django.contrib.auth.backends import BaseBackend
 from django.contrib.auth.hashers import check_password
-from .models import Apoderado, Estudiante, Docente
+from m_user.models import Apoderado, Estudiante, Docente
+from m_administracion.models import Administrador
 
 
-class BackendCustomAuth(BaseBackend):
+class CustomAuthUser(BaseBackend):
     def authenticate(self, request, num_rut=None, contrasenia=None):
         # Buscar en Apoderado
         try:
@@ -42,3 +43,22 @@ class BackendCustomAuth(BaseBackend):
                     return Docente.objects.get(pk=user_id)
                 except Docente.DoesNotExist:
                     return None
+
+
+class CustomAuthAdmin(BaseBackend):
+    def authenticate(self, request, correo_electronico=None, contrasenia=None):
+        # Intentar encontrar un Administrador con el correo electrónico proporcionado
+        try:
+            admin = Administrador.objects.get(correo_electronico=correo_electronico)
+            # Verificar si la contraseña coincide
+            if check_password(contrasenia, admin.contrasenia1):
+                return admin
+        except Administrador.DoesNotExist:
+            return None
+
+    def get_user(self, user_id):
+        # Obtener un Administrador por su ID para mantener la sesión
+        try:
+            return Administrador.objects.get(pk=user_id)
+        except Administrador.DoesNotExist:
+            return None

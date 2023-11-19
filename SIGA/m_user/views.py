@@ -4,6 +4,7 @@ from django.contrib.auth.hashers import check_password
 from .forms import LoginForm
 from .models import Apoderado, Estudiante, Docente
 from sweetify import success, warning
+from SIGA.backends import CustomAuthUser
 
 
 def vista_login(request):
@@ -42,6 +43,7 @@ def vista_login(request):
             # Verifica la contraseña
             if user and check_password(contrasenia, user.contrasenia):
                 request.session["tipo_usuario"] = tipo_usuario
+                user.backend = "SIGA.backends.CustomAuthUser"
                 login(request, user)
                 success(
                     request,

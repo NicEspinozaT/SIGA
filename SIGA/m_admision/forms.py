@@ -12,10 +12,6 @@ from .models import Matricula, Apoderado, Estudiante, lista_generos
 
 
 class FormularioApoderado(ModelForm):
-<<<<<<< HEAD
-
-=======
->>>>>>> 1e2413458cfd8a71a3a43e20bdc640d418457c3a
     class Meta:
         model = Apoderado
         fields = [

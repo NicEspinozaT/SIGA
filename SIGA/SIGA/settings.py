@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "sweetify",
     "m_user",
     "m_admision",
+    "m_administracion",
 ]
 
 MIDDLEWARE = [
@@ -132,7 +133,11 @@ SWEETIFY_SWEETALERT_LIBRARY = "sweetalert2"
 
 # backend de autentificacion personalizado
 
-AUTHENTICATION_BACKENDS = ["m_user.backends.BackendCustomAuth"]
+AUTHENTICATION_BACKENDS = [
+    "SIGA.backends.CustomAuthUser",
+    "SIGA.backends.CustomAuthAdmin",
+]
+
 
 
 # Configuracion de correo electronico
