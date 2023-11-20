@@ -1,11 +1,14 @@
 from django.forms import (
-<<<<<<< HEAD
     DateInput,
     EmailInput,
     ModelForm,
     NumberInput,
     Select,
-    TextInput
+    TextInput,
+    Form,
+    EmailField,
+    CharField,
+    PasswordInput,
 )
 from m_user.models import Docente
 
@@ -29,7 +32,7 @@ class FormularioDocente(ModelForm):
             "fecha_contrato",
         ]
         widgets = {
-"num_rut": NumberInput(
+            "num_rut": NumberInput(
                 attrs={"class": "form-control", "placeholder": "Sin puntos ni guión"}
             ),
             "dv": TextInput(attrs={"class": "form-control"}
@@ -74,15 +77,9 @@ class FormularioDocente(ModelForm):
                 attrs={"class":"form-control"}
             ),
         }
-=======
-    Form,
-    EmailField,
-    CharField,
-    PasswordInput,
-)
+
 
 
 class LoginFormAdmin(Form):
     correo_electronico = EmailField(label="Correo Electrónico")
     contrasenia = CharField(widget=PasswordInput, label="Contraseña")
->>>>>>> e55a6d034eb82c70b09876108f40fc3ef554127f

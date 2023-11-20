@@ -8,7 +8,7 @@ def admision(request):
     return render(request, "admision.html")
 
 
-
+    ### Formulario Apoderado
 def registrar_apoderado(request):
     if request.method == "GET":
         contexto = {
@@ -42,25 +42,35 @@ def registrar_apoderado(request):
         return render(request,"matricula.html",contexto)
 
 
+    ### Formulario Estudiante
 def registrar_estudiante(request):
     if request.method == "GET":
         datos_apoderado_temp = request.session.get('temp_datos_apoderado', {})
         contexto = {
-            "titulo":"Formulario Estudiante",
-            "form_estudiante":FormularioEstudiante(),
-            "num_rut_apod":datos_apoderado_temp,
+            "titulo": "Formulario Estudiante",
+            "form_estudiante": FormularioEstudiante(),
+            "num_rut_apod": datos_apoderado_temp.get('num_rut', ''),
         }
         return render(request, "matricula.html", contexto)
-    
+
     if request.method == "POST":
         datos_estudiante = FormularioEstudiante(data=request.POST)
-        datos_apoderado_temp = request.session.get('temp_datos_apoderado', {}) # Traer el apoderado guardado
-        datos_apoderado_guardados = request.session.get('datos_apoderado_guardados', False) # Para validar si el apoderado existe
+        datos_apoderado_temp = request.session.get('temp_datos_apoderado', {})
+
+        # Obtener el valor del campo apoderado_rut
+        apoderado_rut = request.POST.get('apoderado_rut', None)
+
+        # Validar el formulario
         validar = datos_estudiante.is_valid()
+
         if validar:
-            if not datos_apoderado_guardados:
-                Apoderado.objects.create(**datos_apoderado_temp)
-                request.session['datos_apoderado_guardados'] = True
+            # Si el apoderado no está guardado en la sesión, crear y guardar en la base de datos
+            if not datos_apoderado_temp.get('datos_guardados', False):
+                apoderado = Apoderado.objects.create(**datos_apoderado_temp)
+                request.session['datos_apoderado_temp']['datos_guardados'] = True
+                request.session['datos_apoderado_temp']['apoderado_rut'] = apoderado.num_rut
+
+            # Guardar el estudiante
             datos_estudiante.save()
             success(
                 request,
@@ -70,8 +80,8 @@ def registrar_estudiante(request):
                 button="OK",
             )
             request.session.pop('temp_datos_apoderado', None)
-            request.session.pop('datos_apoderado_guardados', None)
             return redirect("mostrar_inicio")
+
         contexto = {"form_estudiante": datos_estudiante}
         warning(
             request,
@@ -79,6 +89,6 @@ def registrar_estudiante(request):
             text="Observe el formulario y valide sus datos",
             button="Ok",
         )
-        return render(request,"matricula.html",contexto)
+        return render(request, "matricula.html", contexto)
 
 
