@@ -1,5 +1,5 @@
 {% extends 'base/base.html' %}
-{% load static %} 
+{% load static %}
 
 {% block title %} 
 Matrícula
@@ -7,85 +7,87 @@ Matrícula
 
 {% block content %}
 <div class="container mt-5">
-    <form method="POST">
-      {% csrf_token %}
-      
-      <!-- Num Rut -->
-      <div class="form-group">
-        <label class="form-label" for="num_rut">{{form.num_rut.label}}</label>
-        {{form.num_rut}}
-      </div>
-  
-      <!-- Dv -->
-      <div class="form-group">
-        <label class="form-label" for="dv">{{form.dv.label}}</label>
-        {{form.dv}}
-      </div>
-  
-      <!-- Pnombre -->
-      <div class="form-group">
-        <label class="form-label" for="pnombre">{{form.pnombre.label}}</label>
-        {{form.pnombre}}
-      </div>
-  
-      <!-- Snombre -->
-      <div class="form-group">
-        <label class="form-label" for="snombre">{{form.snombre.label}}</label>
-        {{form.snombre}}
-      </div>
-  
-      <!-- Appat -->
-      <div class="form-group">
-        <label class="form-label" for="appat">{{form.appat.label}}</label>
-        {{form.appat}}
-      </div>
-  
-      <!-- Apmat -->
-      <div class="form-group">
-        <label class="form-label" for="apmat">{{form.apmat.label}}</label>
-        {{form.apmat}}
-      </div>
-  
-      <!-- Fec Nac -->
-      <div class="form-group">
-        <label class="form-label" for="fec_nac">{{form.fec_nac.label}}</label>
-        {{form.fec_nac}}
-      </div>
-  
-      <!-- Nacionalidad -->
-      <div class="form-group">
-        <label class="form-label" for="nacionalidad">{{form.nacionalidad.label}}</label>
-        {{form.nacionalidad}}
-      </div>
-  
-      <!-- Direccion -->
-      <div class="form-group">
-        <label class="form-label" for="direccion">{{form.direccion.label}}</label>
-        {{form.direccion}}
-      </div>
-  
-      <!-- Genero -->
-      <div class="form-group">
-        <label class="form-label" for="genero">{{form.genero.label}}</label>
-        {{form.genero}}
-      </div>
-  
-      <!-- Email -->
-      <div class="form-group">
-        <label class="form-label" for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="example@gmail.com" required>
-      </div>
-  
-      <!-- Numero -->
-      <div class="form-group">
-        <label class="form-label" for="numero">Número</label>
-        <input type="number" class="form-control" id="numero" name="numero" required>
-      </div>
-  
-      <!-- Botón de Enviar -->
-      <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
-  </div>
+  <form method="POST">
+    {% csrf_token %}
+    
+    <!-- Formulario Apoderado -->
+    <h2>Formulario Apoderado</h2>
+
+    <!-- Num Rut -->
+    <div class="form-group">
+      <label class="form-label" for="num_rut">{{form_apoderado.num_rut.label}}</label>
+      {{form_apoderado.num_rut}}
+    </div>
+
+    <!-- Dv -->
+    <div class="form-group">
+      <label class="form-label" for="dv">{{form_apoderado.dv.label}}</label>
+      {{form_apoderado.dv}}
+    </div>
+
+    <!-- Pnombre -->
+    <div class="form-group">
+      <label class="form-label" for="pnombre">{{form_apoderado.pnombre.label}}</label>
+      {{form_apoderado.pnombre}}
+    </div>
+
+    <!-- Snombre -->
+    <div class="form-group">
+      <label class="form-label" for="snombre">{{form_apoderado.snombre.label}}</label>
+      {{form_apoderado.snombre}}
+    </div>
+
+    <!-- Appat -->
+    <div class="form-group">
+      <label class="form-label" for="appat">{{form_apoderado.appat.label}}</label>
+      {{form_apoderado.appat}}
+    </div>
+
+    <!-- Apmat -->
+    <div class="form-group">
+      <label class="form-label" for="apmat">{{form_apoderado.apmat.label}}</label>
+      {{form_apoderado.apmat}}
+    </div>
+
+    <!-- Fec Nac -->
+    <div class="form-group">
+      <label class="form-label" for="fec_nac">{{form_apoderado.fec_nac.label}}</label>
+      {{form_apoderado.fec_nac}}
+    </div>
+
+    <!-- Nacionalidad -->
+    <div class="form-group">
+      <label class="form-label" for="nacionalidad">{{form_apoderado.nacionalidad.label}}</label>
+      {{form_apoderado.nacionalidad}}
+    </div>
+
+    <!-- Direccion -->
+    <div class="form-group">
+      <label class="form-label" for="direccion">{{form_apoderado.direccion.label}}</label>
+      {{form_apoderado.direccion}}
+    </div>
+
+    <!-- Genero -->
+    <div class="form-group">
+      <label class="form-label" for="genero">{{form_apoderado.genero.label}}</label>
+      {{form_apoderado.genero}}
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label class="form-label" for="email">{{form_apoderado.email.label}}</label>{{ form_apoderado.email }}
+    </div>
+
+    <!-- Numero -->
+    <div class="form-group">
+      <label class="form-label" for="numero">{{ form_apoderado.numero.label }}</label>{{ form_apoderado.numero }}
+    </div>
+
+    <!-- Botón de Enviar -->
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+
+
 
 {% block js %}
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -94,3 +96,4 @@ Matrícula
 {% endblock js %}
 
 {% endblock content %}
+

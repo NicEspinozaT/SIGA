@@ -1,13 +1,12 @@
 from django.db.models import (
     Model,
-    CharField,
     IntegerField,
     DateTimeField,
     BigAutoField,
     ForeignKey,
     CASCADE,
 )
-from m_user.models import Apoderado, Estudiante, lista_generos
+from m_user.models import Apoderado, Estudiante
 from django.utils import timezone
 
 op_estados = [
@@ -20,10 +19,10 @@ op_estados = [
 class Matricula(Model):
     id = BigAutoField(primary_key=True)
     estado = IntegerField(choices=op_estados, null=False)
-    fecha = DateTimeField(auto_now_add=True, null=False)
-    periodo = IntegerField(default=timezone.now().year, null=False)
-    Apoderado = ForeignKey(Apoderado, on_delete=CASCADE)
-    Estudiante = ForeignKey(Estudiante, on_delete=CASCADE)
+    fecha = DateTimeField(auto_now_add=True)
+    periodo = IntegerField(null=False)
+    apoderado = ForeignKey(Apoderado, on_delete=CASCADE)
+    estudiante = ForeignKey(Estudiante, on_delete=CASCADE)
 
     class Meta:
         db_table = "Matricula"
