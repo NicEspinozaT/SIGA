@@ -6,5 +6,68 @@ Contacto
 {% endblock title %}
 
 {% block content %} 
-<h1>Contacto</h1>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div class="container mt-5">
+    <h1 class="text-center mb-5">Contacto</h1>
+
+    <!-- Contact Form Begin -->
+    <div class="contact-form">
+        <h2 class="text-center mb-4">Déjanos tu Mensaje</h2>
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" placeholder="Nombre">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="email" class="form-control" placeholder="Correo Electrónico">
+                </div>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" placeholder="Mensaje" rows="4"></textarea>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-success">Enviar Mensaje</button>
+            </div>
+        </form>
+    </div>
+
+    <section class="contact-info my-5">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="contact-widget">
+                    <i class="fas fa-phone mb-3"></i>
+                    <h4>Teléfono</h4>
+                    <p>+22 12345698</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="contact-widget">
+                    <i class="fas fa-map-marker-alt mb-3"></i>
+                    <h4>Dirección</h4>
+                    <p>Av. Los Jardineros 1254 Lo Barnechea, Chile</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="contact-widget">
+                    <i class="fas fa-clock mb-3"></i>
+                    <h4>Horario</h4>
+                    <p>09:00 am to 18:00 pm</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="contact-widget">
+                    <i class="fas fa-envelope mb-3"></i>
+                    <h4>Email</h4>
+                    <p>info@siga.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Optional: Including Bootstrap JS and Popper.js for Bootstrap components to work properly -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
 {% endblock content %}

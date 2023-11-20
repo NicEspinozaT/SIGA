@@ -1,10 +1,78 @@
-{% extends 'base/base.html' %} 
+{% extends 'base/base.html' %}
 {% load static %}
-{% block title %}
-Admision
-{%endblock title %}
 
-{% block content %}
-<form action="">
-</form>
+{% block title %}
+Admisión
+{% endblock title %}
+
+{% block content %} 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div class="container mt-5">
+    <h1 class="text-center mb-5">Admisión</h1>
+
+    <!-- Admission Information Begin -->
+    <div class="admission-info mb-4">
+        <h2 class="text-center mb-4">Proceso de Matriculación</h2>
+        <p>Entendemos la importancia de elegir el colegio adecuado para su hijo/a. Nuestro proceso de admisión está diseñado para ser lo más claro y sencillo posible.</p>
+        
+        <div class="list-group">
+            <div class="list-group-item">
+                <h5>Pasos para la Matriculación</h5>
+                <p>Siga los siguientes pasos para completar el proceso de matrícula:</p>
+                <ul>
+                    <li>Complete el formulario de solicitud en línea.</li>
+                    <li>Adjunte los documentos requeridos, incluyendo informes de notas anteriores y certificado de nacimiento.</li>
+                    <li>Programe una entrevista personal y una visita al colegio.</li>
+                    <li>Complete el proceso de pago de la matrícula una vez aceptado/a.</li>
+                </ul>
+            </div>
+            <div class="list-group-item">
+                <h5>Fechas Importantes</h5>
+                <p>Las fechas para el proceso de admisión para el año académico 2024 son las siguientes:</p>
+                <ul>
+                    <li>Apertura de admisiones: 1 de Agosto de 2023</li>
+                    <li>Cierre de admisiones: 30 de Noviembre de 2023</li>
+                    <li>Publicación de resultados: 20 de Diciembre de 2023</li>
+                </ul>
+            </div>
+            <div class="list-group-item">
+                <h5>Documentación Necesaria</h5>
+                <p>Los siguientes documentos son necesarios para completar la matrícula:</p>
+                <ul>
+                    <li>Certificado de nacimiento o documento de identidad.</li>
+                    <li>Informe de notas del año anterior.</li>
+                    <li>Certificado de vacunas al día.</li>
+                    <li>Comprobante de domicilio.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Form for Admission Begin -->
+    <div class="admission-contact-form">
+        <h2 class="text-center mb-4">Solicita Información</h2>
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" placeholder="Nombre del Apoderado">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="email" class="form-control" placeholder="Correo Electrónico">
+                </div>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" placeholder="Escribe aquí cualquier consulta que tengas sobre el proceso de admisión" rows="4"></textarea>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Enviar Consulta</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Optional: Including Bootstrap JS and Popper.js for Bootstrap components to work properly -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
 {% endblock content %}
