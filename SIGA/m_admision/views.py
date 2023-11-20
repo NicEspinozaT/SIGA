@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect
-from .forms import FormularioApoderado, FormularioEstudiante
+from .forms import (
+    FormularioApoderado, 
+    FormularioEstudiante, 
+    FormularioMatricula
+)
 from sweetify import success, warning
-from .models import Apoderado
+from .models import Apoderado, Estudiante
 
 
 def admision(request):
@@ -59,9 +63,9 @@ def registrar_estudiante(request):
             success(
                 request,
                 "Registrado correctamente",
-                text="Gracias por ser parte de nuestra institución",
+                text="Siga al siguiente formulario",
                 timer=2000,
-                button="OK",
+                button="Siguiente"
             )
             return redirect("registroMatricula")
         contexto = {"form_estudiante": datos_estudiante}
@@ -75,7 +79,38 @@ def registrar_estudiante(request):
 
 
 def registrar_matricula(request):
-    return render(request, "formulario_matricula.html")
+    apoderados = Apoderado.objects.all()
+    estudiantes = Estudiante.objects.all()
+    if request.method == "GET":
+        contexto = {
+            "titulo": "Formulario Matrícula",
+            "form_matricula": FormularioMatricula(),
+            "apoderados": apoderados,
+            "estudiantes":estudiantes,
+        }
+        return render(request, "formulario_matricula.html", contexto)
+    
+    if request.method == "POST":
+        datos_matricula = FormularioMatricula(data=request.POST)
+        validar = datos_matricula.is_valid()
+        if validar:
+            datos_matricula.save()
+            success(
+                request,
+                "Matricula completada",
+                text="Gracias por ser parte de nuestra institución",
+                timer=2000,
+                button="Listo",
+            )
+            return redirect("mostrar_inicio")
+        contexto = {"form_matricula": datos_matricula}
+        warning(
+            request,
+            "Datos no válidos",
+            text="Observe el formulario y valide sus datos",
+            button="Ok",
+        )
+        return render(request, "formulario_matricula.html", contexto)
 
 
 

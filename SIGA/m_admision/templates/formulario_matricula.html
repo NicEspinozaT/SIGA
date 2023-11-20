@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %} 
+Matrícula
+{% endblock title %} 
+
+{% block content %}
+
+<div class="container mt-5">
+  <form method="POST">
+    {% csrf_token %}
+    
+    <!-- Formulario Matrícula -->
+    <h2>Formulario Matrícula</h2>
+
+    <!-- Estado -->
+    <div class="form-group">
+      <label class="form-label" for="estado">{{form_matricula.estado.label}}</label>
+      {{form_matricula.estado}}
+    </div>
+
+    <!-- Período -->
+    <div class="form-group">
+      <label class="form-label" for="periodo">{{form_matricula.periodo.label}}</label>
+      {{form_matricula.periodo}}
+    </div>
+
+    <!-- Apoderado -->
+    <div class="form-group">
+      <label class="form-label" for="apoderado">{{form_matricula.apoderado.label}}</label>
+      {{form_matricula.apoderado}}
+    </div>
+
+    <!-- Estudiante -->
+    <div class="form-group">
+      <label class="form-label" for="estudiante">{{form_matricula.estudiante.label}}</label>
+      {{form_matricula.estudiante}}
+    </div>
+
+    <!-- Botón de Enviar -->
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+</div>
+
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock js %}
+
+{% endblock content %}

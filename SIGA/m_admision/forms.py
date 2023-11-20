@@ -156,10 +156,10 @@ class FormularioMatricula(ModelForm):
             "periodo": NumberInput(
                 attrs={"class":"form-control"}
             ),
-            "apoderado": TextInput(
+            "apoderado": Select(
                 attrs={"class":"form-control"}
             ),
-            "estudiante": TextInput(
+            "estudiante": Select(
                 attrs={"class":"form-control"}
             ),
         }
