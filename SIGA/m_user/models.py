@@ -130,8 +130,8 @@ class Docente(Model):
     genero = IntegerField(choices=lista_generos)
     email = EmailField(unique=True)
     numero = IntegerField()
-    especialidad = (IntegerField(choices=lista_esp),)
-    fecha_contrato = (DateField(default=timezone.now),)
+    especialidad = IntegerField(choices=lista_esp)
+    fecha_contrato = DateField(default=timezone.now)
     last_login = DateTimeField("last login", default=timezone.now)
 
     class Meta:

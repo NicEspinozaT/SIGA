@@ -1,0 +1,97 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+Registro Docente
+{% endblock title %}
+
+{% block content %} 
+<div class="container mt-5">
+    <form method="POST">
+      {% csrf_token %}
+      
+      <!-- Formulario Docente -->
+      <h2>Formulario Docente</h2>
+  
+      <!-- Num Rut -->
+      <div class="form-group">
+        <label class="form-label" for="num_rut">Rut docente: </label>
+        {{form_docente.num_rut}}
+      </div>
+  
+      <!-- Dv -->
+      <div class="form-group">
+        <label class="form-label" for="dv">{{form_docente.dv.label}}</label>
+        {{form_docente.dv}}
+      </div>
+  
+      <!-- Pnombre -->
+      <div class="form-group">
+        <label class="form-label" for="pnombre">{{form_docente.pnombre.label}}</label>
+        {{form_docente.pnombre}}
+      </div>
+  
+      <!-- Snombre -->
+      <div class="form-group">
+        <label class="form-label" for="snombre">{{form_docente.snombre.label}}</label>
+        {{form_docente.snombre}}
+      </div>
+  
+      <!-- Appat -->
+      <div class="form-group">
+        <label class="form-label" for="appat">{{form_docente.appat.label}}</label>
+        {{form_docente.appat}}
+      </div>
+  
+      <!-- Apmat -->
+      <div class="form-group">
+        <label class="form-label" for="apmat">{{form_docente.apmat.label}}</label>
+        {{form_docente.apmat}}
+      </div>
+  
+      <!-- Fec Nac -->
+      <div class="form-group">
+        <label class="form-label" for="fec_nac">{{form_docente.fec_nac.label}}</label>
+        {{form_docente.fec_nac}}
+      </div>
+  
+      <!-- Nacionalidad -->
+      <div class="form-group">
+        <label class="form-label" for="nacionalidad">{{form_docente.nacionalidad.label}}</label>
+        {{form_docente.nacionalidad}}
+      </div>
+  
+      <!-- Direccion -->
+      <div class="form-group">
+        <label class="form-label" for="direccion">{{form_docente.direccion.label}}</label>
+        {{form_docente.direccion}}
+      </div>
+  
+      <!-- Genero -->
+      <div class="form-group">
+        <label class="form-label" for="genero">{{form_docente.genero.label}}</label>
+        {{form_docente.genero}}
+      </div>
+  
+      <!-- Email -->
+      <div class="form-group">
+        <label class="form-label" for="email">{{form_docente.email.label}}</label>{{ form_docente.email }}
+      </div>
+  
+      <!-- Numero -->
+      <div class="form-group">
+        <label class="form-label" for="numero">{{ form_docente.numero.label }}</label>{{ form_docente.numero }}
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="especialidad">{{ form_docente.especialidad.label }}</label>{{ form_docente.especialidad }}
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="fecha_contrato">{{ form_docente.fecha_contrato.label }}</label>{{ form_docente.fecha_contrato }}
+      </div>
+  
+      <!-- Botón de Enviar -->
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+{% endblock content %}

@@ -5,6 +5,7 @@ from django.forms import (
     TextInput,
     DateInput,
     EmailInput,
+    ModelChoiceField,
 )
 from .models import Apoderado, Estudiante, Matricula
 
@@ -68,8 +69,9 @@ class FormularioApoderado(ModelForm):
         }
 
 
-class FormularioEstudiante(ModelForm):
 
+class FormularioEstudiante(ModelForm):
+    apoderado = ModelChoiceField(queryset=Apoderado.objects.all(), widget=Select(attrs={"class": "form-control"}))
     class Meta:
         model = Estudiante
         fields = [
@@ -86,6 +88,7 @@ class FormularioEstudiante(ModelForm):
             "email",
             "numero",
             "parentezco",
+            "apoderado",
         ]
         widgets = {
             "num_rut": NumberInput(
@@ -132,7 +135,10 @@ class FormularioEstudiante(ModelForm):
             ),
             "parentezco": TextInput(
                 attrs={"class":"form-control"}
-            )
+            ),
+            "apoderado": Select(
+                attrs={"class":"form-control"}
+            ),
         }
 
 
