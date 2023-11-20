@@ -22,7 +22,8 @@ def vista_login(request):
                 user = Apoderado.objects.get(num_rut=num_rut)
                 tipo_usuario = "apoderado"
             except Apoderado.DoesNotExist:
-                user = None
+                # Continúa buscando en otros modelos si no encuentra en Apoderado
+                pass
 
             # Si no se encuentra en Apoderado, busca en Estudiante
             if not user:
@@ -30,7 +31,8 @@ def vista_login(request):
                     user = Estudiante.objects.get(num_rut=num_rut)
                     tipo_usuario = "estudiante"
                 except Estudiante.DoesNotExist:
-                    user = None
+                    # Continúa buscando en otros modelos si no encuentra en Estudiante
+                    pass
 
             # Si no se encuentra en Estudiante, busca en Docente
             if not user:
@@ -38,33 +40,34 @@ def vista_login(request):
                     user = Docente.objects.get(num_rut=num_rut)
                     tipo_usuario = "docente"
                 except Docente.DoesNotExist:
-                    user = None
+                    # Usuario no encontrado en ningún modelo
+                    pass
 
-            # Verifica la contraseña
+            # Verifica la contraseña y maneja el inicio de sesión
             if user and check_password(contrasenia, user.contrasenia):
+                # Establece la sesión y realiza el inicio de sesión
                 request.session["tipo_usuario"] = tipo_usuario
                 request.session["usuario_autenticado"] = True
                 user.backend = "SIGA.backends.CustomAuthUser"
                 login(request, user)
-                success(
-                    request,
-                    "Sesión iniciada correctamente",
-                    text=":)",
-                    timer=3000,
-                    button="OK",
-                )
-                return redirect("mostrar_inicio")
+                success(request, "Sesión iniciada correctamente", text=":)", timer=3000, button="OK")
+                
+                # Redirige según el tipo de usuario
+                if tipo_usuario == "estudiante":
+                    return redirect("alumno")
+                elif tipo_usuario == "apoderado":
+                    return redirect("apoderado")
+                elif tipo_usuario == "docente":
+                    return redirect("docente")
             else:
-                form.add_error(None, "Número de RUT o contraseña incorrectos.")
-        warning(
-            request,
-            "Ups...",
-            text="Observer el formulario y valide sus datos",
-            timer=3000,
-            button="OK",
-        )
+                # Contraseña incorrecta o usuario no encontrado
+                warning(request, "Número de RUT o contraseña incorrectos", button="OK")
+        else:
+            # Formulario no válido
+            warning(request, "Ups...", text="Observer el formulario y valide sus datos", timer=3000, button="OK")
 
     else:
+        # GET request
         form = LoginForm()
 
     return render(request, "login.html", {"form": form})

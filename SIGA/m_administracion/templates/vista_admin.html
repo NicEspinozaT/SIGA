@@ -5,8 +5,18 @@
 Admin
 {% endblock title %}
 
-{% block content %} 
-<h1>Administración</h1>
-<a type="btn btn-primary" href="{% url 'registrarDocente'%}">Registrar un docente</a>
-<a type="btn btn-primary" href="{% url 'listar_docentes'%}">Listado de docentes</a>
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4 text-center">Panel de Administración</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="list-group">
+                <a class="list-group-item list-group-item-action" href="{% url 'registrarDocente' %}">Registrar un Docente</a>
+                <a class="list-group-item list-group-item-action" href="{% url 'listar_docentes' %}">Listado de Docentes</a>
+                <a class="list-group-item list-group-item-action" href="{% url 'agregar_curso' %}">Registrar un Curso</a>
+                <a class="list-group-item list-group-item-action" href="{% url 'cursos' %}">Listado de Cursos</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
