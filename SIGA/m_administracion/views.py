@@ -38,8 +38,10 @@ def registrar_docente(request):
         return render(request,"registro_docente.html",contexto)
 
 # CRUD DOCENTE
-def listar_Docente(request):
-    return render(request, "listar_docentes.html")
+def listar_docentes(request):
+    docentes = Docente.objects.all()  # Obtiene todos los docentes
+    return render(request, "listar_docentes.html", {"docentes": docentes})
+
 
 
 # CRUD ESTUDIANTE

@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Listado de Docentes</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>RUT</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Especialidad</th>
+                <!-- Agrega más columnas según sea necesario -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for docente in docentes %}
+            <tr>
+                <td>{{ docente.num_rut }}-{{ docente.dv }}</td>
+                <td>{{ docente.pnombre }} {{ docente.appat }}</td>
+                <td>{{ docente.email }}</td>
+                <td>{{ docente.get_especialidad_display }}</td>
+                <!-- Agrega más campos según sea necesario -->
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No hay docentes registrados.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
