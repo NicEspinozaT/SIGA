@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
-from django.contrib.auth.hashers import check_password, make_password
+from django.contrib.auth import login, logout
+from django.contrib.auth.hashers import check_password
 from .forms import LoginForm
 from .models import Apoderado, Estudiante, Docente
 from sweetify import success, warning
-from django.core.mail import send_mail
+from SIGA.backends import CustomAuthUser
 
 
 def vista_login(request):
@@ -43,12 +43,13 @@ def vista_login(request):
             # Verifica la contraseña
             if user and check_password(contrasenia, user.contrasenia):
                 request.session["tipo_usuario"] = tipo_usuario
+                request.session["usuario_autenticado"] = True
                 user.backend = "SIGA.backends.CustomAuthUser"
                 login(request, user)
                 success(
                     request,
-                    "Registrado correctamente",
-                    text="Gracias por ser parte",
+                    "Sesión iniciada correctamente",
+                    text=":)",
                     timer=3000,
                     button="OK",
                 )
@@ -69,6 +70,25 @@ def vista_login(request):
     return render(request, "login.html", {"form": form})
 
 
+def logout_view(request):
+    # Limpiar la sesión
+    request.session.flush()
+
+    # Opcionalmente, puedes hacer logout para limpiar cualquier dato adicional
+    # que Django maneja en la sesión (si estás utilizando partes del sistema de autenticación de Django)
+    logout(request)
+    success(
+        request,
+        "Sesión cerrada correctamente!",
+        text="Vuelve pronto",
+        timer=3000,
+        button="OK",
+    )
+
+    # Redirigir al usuario a la página de inicio o de login
+    return redirect("mostrar_inicio")
+
+
 def vistaAlumno(request):
     return render(request, "alumno/vistaAlumno.html")
 
@@ -86,38 +106,6 @@ def perfilDocente(request):
 
 
 def solicitar_contraseña(request):
-    if request.method == 'POST':
-        rut = request.POST.get('rut')
-        usuario = None
-        
-        # Busca el usuario en las tablas correspondientes
-        for model in [Apoderado, Estudiante, Docente]:
-            usuario = model.objects.filter(num_rut=rut).first()
-            if usuario:
-                break
-        
-        if usuario:
-            nueva_contrasena = Apoderado.generar_contrasenia_aleatoria()
-            usuario.contrasenia = make_password(nueva_contrasena)
-            usuario.save()
-            send_mail(
-                "Restablecimiento de contraseña sistema SIGA",
-                f"Tu nueva contraseña es: {nueva_contrasena}",
-                "siga.educacion@gmail.com",
-                [usuario.email],
-                fail_silently=False,
-            )
-            success(
-                request,
-                "Solicitud realizada",
-                text="Hemos enviado a tú correo la nueva contraseña",
-                timer=20000,
-                button="Siguiente"
-            )
-            return redirect('login')
-        else:
-            # Manejar el caso de que no se encuentre el usuario
-            pass
     return render(request, "solicitarContraseña.html")
 
 
