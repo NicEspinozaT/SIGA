@@ -45,7 +45,11 @@ urlpatterns = [
     path("", include(urlUser)),
     path("", include(urlAdmision)),
     path("", include(urlAcademico)),
+<<<<<<< HEAD
     path("", include(urlAdministracion)),
+=======
+    path("customAdmin/", include(urlAdministracion)),
+>>>>>>> e55a6d034eb82c70b09876108f40fc3ef554127f
     path("admin/", admin.site.urls),
 ]
 

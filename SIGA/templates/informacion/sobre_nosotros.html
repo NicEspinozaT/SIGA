@@ -6,5 +6,46 @@ Sobre Nosotros
 {% endblock title %}
 
 {% block content %} 
-<h1>FutureCode</h1>
+<body class="bg-light d-flex flex-column align-items-center">
+
+    <header class="bg-white text-dark w-100 p-3 mb-3 text-center">
+        <h1>Sobre Nosotros</h1>
+    </header>
+
+    <section class="container my-3 bg-white rounded shadow-sm p-4">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <img src="{% static 'img/mision.jpeg' %}" class="img-fluid rounded" alt="Imagen Misión" style="height: 208px; width: 208px;">
+            </div>
+            <div class="col-md-8 d-flex flex-column justify-content-center">
+                <h2>Misión</h2>
+                <p>Nuestra misión es proporcionar educación de calidad, inspirando a los estudiantes a alcanzar su máximo potencial académico y personal.</p>
+            </div>
+
+            <div class="col-md-4">
+                <img src="{% static 'img/vision.jpeg' %}" class="img-fluid rounded" alt="Imagen Visión" style="height: 208px; width: 208px;">
+            </div>
+            <div class="col-md-8 d-flex flex-column justify-content-center">
+                <h2>Visión</h2>
+                <p>Ser reconocidos como líderes en la educación, creando un entorno donde la excelencia académica y el desarrollo personal florezcan.</p>
+            </div>
+
+            <div class="col-md-4">
+                <img src="{% static 'img/valores.jpeg' %}" class="img-fluid rounded" alt="Imagen Valores" style="height: 208px; width: 208px;">
+            </div>
+            <div class="col-md-8 d-flex flex-column justify-content-center">
+                <h2>Valores</h2>
+                <p>Nos guiamos por los siguientes valores: compromiso con la excelencia, integridad, respeto por la diversidad, y desarrollo sostenible.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white w-100 py-3 text-center">
+        &copy; 2023 Sistema de Gestión Académica
+    </footer>
+
+    <!-- Bootstrap JS y Popper.js (opcional) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+</body>
+
 {% endblock content %}

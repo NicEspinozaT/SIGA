@@ -1,4 +1,5 @@
 from django.forms import (
+<<<<<<< HEAD
     DateInput,
     EmailInput,
     ModelForm,
@@ -73,3 +74,15 @@ class FormularioDocente(ModelForm):
                 attrs={"class":"form-control"}
             ),
         }
+=======
+    Form,
+    EmailField,
+    CharField,
+    PasswordInput,
+)
+
+
+class LoginFormAdmin(Form):
+    correo_electronico = EmailField(label="Correo Electrónico")
+    contrasenia = CharField(widget=PasswordInput, label="Contraseña")
+>>>>>>> e55a6d034eb82c70b09876108f40fc3ef554127f

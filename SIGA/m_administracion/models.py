@@ -11,7 +11,7 @@ class Administrador(Model):
     apellido = CharField(max_length=100)
     contrasenia1 = CharField(max_length=128, null=True, blank=True)
     fecha_creacion = DateTimeField(auto_now_add=True)
-    ultimo_acceso = DateTimeField("Último Acceso", default=timezone.now)
+    last_login = DateTimeField("last_login", default=timezone.now)
     es_activo = BooleanField(default=True)
 
     class Meta:

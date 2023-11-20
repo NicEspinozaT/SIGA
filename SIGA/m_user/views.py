@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.hashers import check_password
 from .forms import LoginForm
 from .models import Apoderado, Estudiante, Docente
@@ -43,12 +43,13 @@ def vista_login(request):
             # Verifica la contraseña
             if user and check_password(contrasenia, user.contrasenia):
                 request.session["tipo_usuario"] = tipo_usuario
+                request.session["usuario_autenticado"] = True
                 user.backend = "SIGA.backends.CustomAuthUser"
                 login(request, user)
                 success(
                     request,
-                    "Registrado correctamente",
-                    text="Gracias por ser parte",
+                    "Sesión iniciada correctamente",
+                    text=":)",
                     timer=3000,
                     button="OK",
                 )
@@ -67,6 +68,25 @@ def vista_login(request):
         form = LoginForm()
 
     return render(request, "login.html", {"form": form})
+
+
+def logout_view(request):
+    # Limpiar la sesión
+    request.session.flush()
+
+    # Opcionalmente, puedes hacer logout para limpiar cualquier dato adicional
+    # que Django maneja en la sesión (si estás utilizando partes del sistema de autenticación de Django)
+    logout(request)
+    success(
+        request,
+        "Sesión cerrada correctamente!",
+        text="Vuelve pronto",
+        timer=3000,
+        button="OK",
+    )
+
+    # Redirigir al usuario a la página de inicio o de login
+    return redirect("mostrar_inicio")
 
 
 def vistaAlumno(request):
