@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.DS_Store
+my_env/
+db.sqlite3
+
+*/migrations/*.py
+!*/migrations/__init__.py
