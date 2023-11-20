@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from m_user.urls import urlpatterns as urlUser
 from m_admision.urls import urlpatterns as urlAdmision
 from m_academico.urls import urlpatterns as urlAcademico
+from m_administracion.urls import urlpatterns as urlAdministracion
 from .views import (
     mostrar_inicio,
     mostrar_contacto,
@@ -44,6 +45,7 @@ urlpatterns = [
     path("", include(urlUser)),
     path("", include(urlAdmision)),
     path("", include(urlAcademico)),
+    path("customAdmin/", include(urlAdministracion)),
     path("admin/", admin.site.urls),
 ]
 

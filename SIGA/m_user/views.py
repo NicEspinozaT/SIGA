@@ -4,7 +4,6 @@ from django.contrib.auth.hashers import check_password
 from .forms import LoginForm
 from .models import Apoderado, Estudiante, Docente
 from sweetify import success, warning
-from SIGA.backends import CustomAuthUser
 
 
 def vista_login(request):
