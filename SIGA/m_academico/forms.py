@@ -1,8 +1,9 @@
 from django.forms import (
     ModelForm,
     Select,
+    
 )
-from .models import Curso, Asignatura, lista_nivel, lista_seccion
+from .models import Curso, Asignatura, lista_nivel, lista_seccion, EvaluacionPlanificada
 
 
 class CursoForm(ModelForm):
@@ -22,3 +23,9 @@ class AsignaturaForm(ModelForm):
     class Meta:
         model = Asignatura
         fields = ["nombre", "sigla", "docentes"]  # Excluye 'cursos'
+        
+
+class EvaluacionForm(ModelForm):
+    class Meta:
+        model = EvaluacionPlanificada
+        fields = ['titulo', 'descripcion', 'fecha']
