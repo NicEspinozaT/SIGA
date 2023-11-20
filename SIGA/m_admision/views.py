@@ -8,21 +8,100 @@ def admision(request):
     return render(request, "admision.html")
 
 
-    ### Formulario Apoderado
+### Formulario Apoderado
 def registrar_apoderado(request):
     if request.method == "GET":
         contexto = {
-            "titulo":"Formulario Apoderado",
-            "form_apoderado":FormularioApoderado()
+            "titulo": "Formulario Apoderado",
+            "form_apoderado": FormularioApoderado()
         }
-        request.session['datos_apoderado_guardados'] = False
-        return render(request, "matricula.html", contexto)
-    
+        return render(request, "formulario_apoderado.html", contexto)
+
     if request.method == "POST":
         datos_apoderado = FormularioApoderado(data=request.POST)
         validar = datos_apoderado.is_valid()
         if validar:
-            request.session['temp_datos_apoderado'] = datos_apoderado.cleaned_data
+            datos_apoderado.save()
+            success(
+                request,
+                "Registrado correctamente",
+                text="Siga al siguiente formulario",
+                timer=2000,
+                button="Siguiente"
+            )
+            return redirect("registroEstudiante")
+        contexto = {"form_apoderado": datos_apoderado}
+        warning(
+            request,
+            "Datos no válidos",
+            text="Observe el formulario y valide sus datos",
+            button="Ok",
+        )
+        return render(request, "formulario_apoderado.html", contexto)
+
+
+### Formulario Estudiante
+def registrar_estudiante(request):
+    apoderados = Apoderado.objects.all()
+    if request.method == "GET":
+        contexto = {
+            "titulo": "Formulario Estudiante",
+            "form_estudiante": FormularioEstudiante(),
+            "apoderados": apoderados,
+        }
+        return render(request, "formulario_estudiante.html", contexto)
+
+    if request.method == "POST":
+        datos_estudiante = FormularioEstudiante(data=request.POST)
+        validar = datos_estudiante.is_valid()
+        if validar:
+            datos_estudiante.save()
+            success(
+                request,
+                "Registrado correctamente",
+                text="Gracias por ser parte de nuestra institución",
+                timer=2000,
+                button="OK",
+            )
+            return redirect("registroMatricula")
+        contexto = {"form_estudiante": datos_estudiante}
+        warning(
+            request,
+            "Datos no válidos",
+            text="Observe el formulario y valide sus datos",
+            button="Ok",
+        )
+        return render(request, "formulario_estudiante.html", contexto)
+
+
+def registrar_matricula(request):
+    return render(request, "formulario_matricula.html")
+
+
+
+
+
+
+'''
+### Formulario Apoderado
+def registrar_apoderado(request):
+    if request.method == "GET":
+        contexto = {
+            "titulo": "Formulario Apoderado",
+            "form_apoderado": FormularioApoderado()
+        }
+        request.session['datos_apoderado_guardados'] = False
+        return render(request, "matricula.html", contexto)
+
+    if request.method == "POST":
+        datos_apoderado = FormularioApoderado(data=request.POST)
+        validar = datos_apoderado.is_valid()
+        if validar:
+            # Convertir la fecha a cadena antes de guardarla en la sesión
+            datos_apoderado_cleaned = datos_apoderado.cleaned_data
+            datos_apoderado_cleaned['fec_nac'] = str(datos_apoderado_cleaned['fec_nac'])
+
+            request.session['temp_datos_apoderado'] = datos_apoderado_cleaned
             request.session['datos_apoderado_guardados'] = False
             success(
                 request,
@@ -31,58 +110,8 @@ def registrar_apoderado(request):
                 timer=1000,
                 button="Siguiente"
             )
-            return redirect("mostrar_inicio")
-        contexto = {"form_apoderado":datos_apoderado}
-        warning(
-            request,
-            "Datos no válidos",
-            text="Observe el formulario y valide sus datos",
-            button="Ok",
-        )
-        return render(request,"matricula.html",contexto)
-
-
-    ### Formulario Estudiante
-def registrar_estudiante(request):
-    if request.method == "GET":
-        datos_apoderado_temp = request.session.get('temp_datos_apoderado', {})
-        contexto = {
-            "titulo": "Formulario Estudiante",
-            "form_estudiante": FormularioEstudiante(),
-            "num_rut_apod": datos_apoderado_temp.get('num_rut', ''),
-        }
-        return render(request, "matricula.html", contexto)
-
-    if request.method == "POST":
-        datos_estudiante = FormularioEstudiante(data=request.POST)
-        datos_apoderado_temp = request.session.get('temp_datos_apoderado', {})
-
-        # Obtener el valor del campo apoderado_rut
-        apoderado_rut = request.POST.get('apoderado_rut', None)
-
-        # Validar el formulario
-        validar = datos_estudiante.is_valid()
-
-        if validar:
-            # Si el apoderado no está guardado en la sesión, crear y guardar en la base de datos
-            if not datos_apoderado_temp.get('datos_guardados', False):
-                apoderado = Apoderado.objects.create(**datos_apoderado_temp)
-                request.session['datos_apoderado_temp']['datos_guardados'] = True
-                request.session['datos_apoderado_temp']['apoderado_rut'] = apoderado.num_rut
-
-            # Guardar el estudiante
-            datos_estudiante.save()
-            success(
-                request,
-                "Registrado correctamente",
-                text="Gracias por ser parte de nuestra institución",
-                timer=1000,
-                button="OK",
-            )
-            request.session.pop('temp_datos_apoderado', None)
-            return redirect("mostrar_inicio")
-
-        contexto = {"form_estudiante": datos_estudiante}
+            return redirect("registroEstudiante")
+        contexto = {"form_apoderado": datos_apoderado}
         warning(
             request,
             "Datos no válidos",
@@ -90,5 +119,4 @@ def registrar_estudiante(request):
             button="Ok",
         )
         return render(request, "matricula.html", contexto)
-
-
+'''

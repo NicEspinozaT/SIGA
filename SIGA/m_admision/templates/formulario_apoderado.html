@@ -1,0 +1,102 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %} 
+Matrícula
+{% endblock title %} 
+
+{% block content %}
+
+
+
+<div class="container mt-5">
+  <form method="POST">
+    {% csrf_token %}
+    
+    <!-- Formulario Apoderado -->
+    <h2>Formulario Apoderado</h2>
+
+    <!-- Num Rut -->
+    <div class="form-group">
+      <label class="form-label" for="num_rut">Rut apoderado: </label>
+      {{form_apoderado.num_rut}}
+    </div>
+
+    <!-- Dv -->
+    <div class="form-group">
+      <label class="form-label" for="dv">{{form_apoderado.dv.label}}</label>
+      {{form_apoderado.dv}}
+    </div>
+
+    <!-- Pnombre -->
+    <div class="form-group">
+      <label class="form-label" for="pnombre">{{form_apoderado.pnombre.label}}</label>
+      {{form_apoderado.pnombre}}
+    </div>
+
+    <!-- Snombre -->
+    <div class="form-group">
+      <label class="form-label" for="snombre">{{form_apoderado.snombre.label}}</label>
+      {{form_apoderado.snombre}}
+    </div>
+
+    <!-- Appat -->
+    <div class="form-group">
+      <label class="form-label" for="appat">{{form_apoderado.appat.label}}</label>
+      {{form_apoderado.appat}}
+    </div>
+
+    <!-- Apmat -->
+    <div class="form-group">
+      <label class="form-label" for="apmat">{{form_apoderado.apmat.label}}</label>
+      {{form_apoderado.apmat}}
+    </div>
+
+    <!-- Fec Nac -->
+    <div class="form-group">
+      <label class="form-label" for="fec_nac">{{form_apoderado.fec_nac.label}}</label>
+      {{form_apoderado.fec_nac}}
+    </div>
+
+    <!-- Nacionalidad -->
+    <div class="form-group">
+      <label class="form-label" for="nacionalidad">{{form_apoderado.nacionalidad.label}}</label>
+      {{form_apoderado.nacionalidad}}
+    </div>
+
+    <!-- Direccion -->
+    <div class="form-group">
+      <label class="form-label" for="direccion">{{form_apoderado.direccion.label}}</label>
+      {{form_apoderado.direccion}}
+    </div>
+
+    <!-- Genero -->
+    <div class="form-group">
+      <label class="form-label" for="genero">{{form_apoderado.genero.label}}</label>
+      {{form_apoderado.genero}}
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label class="form-label" for="email">{{form_apoderado.email.label}}</label>{{ form_apoderado.email }}
+    </div>
+
+    <!-- Numero -->
+    <div class="form-group">
+      <label class="form-label" for="numero">{{ form_apoderado.numero.label }}</label>{{ form_apoderado.numero }}
+    </div>
+
+    <!-- Botón de Enviar -->
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+
+
+
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock js %}
+
+{% endblock content %}
+

@@ -51,3 +51,10 @@ def listar_Apoderado(request):
 def listar_Estudiante(request):
     estudiante = Estudiante.objects.all()
     return render(request, "listar_estudiante.html", {"estudiante": estudiante})
+
+
+def vista_admin(request):
+    return render(request, "vista_admin.html")
+
+def admin_login(request):
+    return render(request, "admin_login.html")

@@ -70,7 +70,6 @@ class FormularioApoderado(ModelForm):
 
 
 class FormularioEstudiante(ModelForm):
-    apoderado_rut = TextInput(attrs={"class":"form-control", "readonly":True})
     class Meta:
         model = Estudiante
         fields = [
@@ -87,7 +86,7 @@ class FormularioEstudiante(ModelForm):
             "email",
             "numero",
             "parentezco",
-            "apoderado_rut",
+            "apoderado",
         ]
         widgets = {
             "num_rut": NumberInput(
@@ -135,8 +134,8 @@ class FormularioEstudiante(ModelForm):
             "parentezco": TextInput(
                 attrs={"class":"form-control"}
             ),
-            "apoderado_rut": Select(
-                attrs={"class":"form-control", "readonly":True}
+            "apoderado": Select(
+                attrs={"class":"form-control"}
             ),
         }
 

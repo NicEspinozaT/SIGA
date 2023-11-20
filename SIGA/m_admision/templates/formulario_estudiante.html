@@ -12,8 +12,8 @@ Matrícula
   <form method="POST">
     {% csrf_token %}
     
-    <!-- Formulario Apoderado -->
-    <h2>Formulario Apoderado</h2>
+    <!-- Formulario Estudiante -->
+    <h2>{{titulo}}</h2>
 
     <!-- Num Rut -->
     <div class="form-group">
@@ -85,10 +85,23 @@ Matrícula
       <label class="form-label" for="numero">{{ form_estudiante.numero.label }}</label>{{ form_estudiante.numero }}
     </div>
 
+    <div class="form-group">
+      <label class="form-label" for="parentezco">Parentezco: </label>{{ form_estudiante.parentezco }}
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="apoderado">Apoderado:</label>
+      <select class="form-control" id="apoderado" name="apoderado">
+        {% for apoderado in apoderados %}
+          <option value="{{ apoderado.num_rut }}">{{ apoderado.pnombre }} {{ apoderado.appat }} {{ apoderado.apmat }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
     <!-- Botón de Enviar -->
     <button type="submit" class="btn btn-primary">Enviar</button>
   </form>
-
+</div>
 
 
 {% block js %}
