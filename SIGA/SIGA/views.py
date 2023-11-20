@@ -25,9 +25,5 @@ def listar_horario(request):
     return render(request, "informacion/listarHorario.html")
 
 
-# def listar_curso(request):
-#     return render(request, "informacion/cursos.html")
-
-
 def asistencia_alumno(request):
     return render(request, "informacion/asistenciaAlumno.html")
