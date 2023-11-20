@@ -2,36 +2,35 @@
 {% load static %} 
 {% block title %}
 Login 
-{%endblock title %} 
+{% endblock title %} 
 {% block content %}
-<main class="container">
-  <form method="POST">
+<main class="container my-5">
+  <form method="POST" class="col-md-6 offset-md-3">
     {% csrf_token %}
-    <div
-      class="mb-1 offset-md-4 col-md-4"
-      style="display: flex; justify-content: center; align-items: center"
-    >
-      <h1>Iniciar sesión</h1>
+    <h1 class="text-center mb-4">Iniciar sesión</h1>
+
+    <!-- Ingresar rut -->
+    <div class="mb-3">
+      <label class="form-label">{{ form.num_rut.label }}</label>
+      {{ form.num_rut }}
+      <div id="emailHelp" class="form-text">{{ form.num_rut.help_text }}</div>
     </div>
-    <!-- ingresar rut -->
-    <div class="mb-1 offset-md-4 col-md-4">
-      <label class="form-label m-2">{{form.num_rut.label}}</label>
-      {{form.num_rut}}
-      <div id="emailHelp" class="form-text">{{form.num_rut.help_text}}</div>
+
+    <!-- Ingresar contraseña -->
+    <div class="mb-3">
+      <label class="form-label">{{ form.contrasenia.label }}</label>
+      {{ form.contrasenia }}
     </div>
-    <!-- ingresar contraseña -->
-    <div class="mb-1 offset-md-4 col-md-4">
-      <label class="form-label m-2">{{form.contrasenia.label}}</label>
-      {{form.contrasenia}}
-    </div>
-    <!-- boton de inicio -->
-    <button
-      type="submit"
-      role="submit"
-      class="btn btn-primary offset-md-4 col-md-4"
-    >
+
+    <!-- Botón de inicio -->
+    <button type="submit" role="submit" class="btn btn-primary w-100 mb-3">
       Iniciar
     </button>
+
+    <!-- Enlace para solicitar contraseña -->
+    <div class="text-center">
+      <a href="{% url 'solicitarContraseña' %}" class="link-primary">¿Olvidaste tu contraseña?</a>
+    </div>
   </form>
 </main>
 {% endblock content %}
