@@ -28,14 +28,22 @@ Matrícula
 
     <!-- Apoderado -->
     <div class="form-group">
-      <label class="form-label" for="apoderado">{{form_matricula.apoderado.label}}</label>
-      {{form_matricula.apoderado}}
+      <label class="form-label" for="apoderado">Apoderado:</label>
+      <select class="form-control" id="apoderado" name="apoderado">
+        {% for apoderado in apoderados %}
+          <option value="{{ apoderado.num_rut }}">{{ apoderado.pnombre }} {{ apoderado.appat }} {{ apoderado.apmat }}</option>
+        {% endfor %}
+      </select>
     </div>
 
     <!-- Estudiante -->
     <div class="form-group">
-      <label class="form-label" for="estudiante">{{form_matricula.estudiante.label}}</label>
-      {{form_matricula.estudiante}}
+      <label class="form-label" for="estudiante">Estudiante:</label>
+      <select class="form-control" id="estudiante" name="estudiante">
+        {% for estudiante in estudiantes %}
+          <option value="{{ estudiante.num_rut }}">{{ estudiante.pnombre }} {{ estudiante.appat }} {{ estudiante.apmat }}</option>
+        {% endfor %}
+      </select>
     </div>
 
     <!-- Botón de Enviar -->
