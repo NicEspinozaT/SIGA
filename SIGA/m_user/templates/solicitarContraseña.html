@@ -4,18 +4,15 @@
 Login 
 {%endblock title %} 
 {% block content %}
-<main class="container">
-  <form>
-    
-    <div class="mb-3 col-6 offset-3 form-group ">
-      <h3>Solicitud de contraseña</h3>
-      <label for="exampleFormControlInput1" class="form-label">Correo electronico:</label>
-      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
-    </div>
-    
-    <a href="{% url 'mostrar_inicio' %}"class="btn btn-primary offset-3">
-        Solicitar contraseña
-    </a>
-  </form>
-</main>
+<div class="container mt-5">
+    <h2>Solicitud de nueva contraseña</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="rut">Ingrese su RUT</label>
+            <input type="text" class="form-control" name="rut" id="rut" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Solicitar nueva contraseña</button>
+    </form>
+</div>
 {% endblock content %}
