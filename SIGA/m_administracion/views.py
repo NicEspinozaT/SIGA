@@ -71,6 +71,7 @@ def admin_login(request):
             try:
                 administrador = Administrador.objects.get(correo_electronico=correo_electronico)
                 if check_password(contrasenia, administrador.contrasenia1):
+                    request.session["tipo_usuario"] = "administrador"
                     # Aquí puedes manejar la sesión del administrador
                     # Por ejemplo, puedes usar el sistema de autenticación de Django
                     # login(request, administrador)

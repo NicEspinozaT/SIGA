@@ -22,15 +22,24 @@
     <li class="nav-item">
       <a class="nav-link" href="{% url 'login' %}">Iniciar Sesión</a>
     </li>
+    
+    {% if request.session.tipo_usuario == 'administrador' %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'vista_admin' %}">Administrador
+      </a>
+    </li>
+    {%else%}
     <li class="nav-item">
       <a class="nav-link" href="{% url 'admin_login' %}">Administrador
       </a>
     </li>
+    {%endif%}
     <li class="nav-item">
       <a class="btn btn-primary" role="button" aria-disabled="true"
       href="{% url 'matricula' %}" >Matriculate Aqui!</a
       >
     </li>
+    
     {%endif%}
   </ul>
   <!-- navbar -->
