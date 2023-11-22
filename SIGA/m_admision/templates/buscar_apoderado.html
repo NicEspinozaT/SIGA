@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+Buscar Apoderado
+{% endblock title %}
+
+{% block content %} 
+<body>
+    <h1>Buscar Apoderado</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="rut">RUT del Apoderado:</label>
+        <input type="text" name="rut" id="rut">
+        <input type="submit" value="Buscar">
+    </form>
+</body>
+{% endblock content %} 
