@@ -12,6 +12,22 @@ def admision(request):
     return render(request, "admision.html")
 
 
+## Buscar Apoderado
+def buscar_apoderado(request):
+    if request.method == 'POST':
+        num_rut = request.POST.get('rut') 
+        try:
+            ap_exist = Apoderado.objects.get(num_rut=num_rut)
+            request.session['rut_apoderado'] = num_rut  
+            return redirect('buscarEstudiante')
+            
+        except: 
+            return redirect('registrarApoderado') 
+             
+       
+            
+    return render(request, 'buscar_apoderado.html')  
+
 ### Formulario Apoderado
 def registrar_apoderado(request):
     if request.method == "GET":
@@ -33,7 +49,7 @@ def registrar_apoderado(request):
                 timer=2000,
                 button="Siguiente"
             )
-            return redirect("registroEstudiante")
+            return redirect("buscarEstudiante")
         contexto = {"form_apoderado": datos_apoderado}
         warning(
             request,
@@ -42,10 +58,27 @@ def registrar_apoderado(request):
             button="Ok",
         )
         return render(request, "formulario_apoderado.html", contexto)
+    
+## Buscar Estudiante
+def buscar_estudiante(request):
+    if request.method == 'POST':
+        num_rut = request.POST.get('rut') 
+        try:
+            ap_exist = Estudiante.objects.get(num_rut=num_rut)
+            request.session['rut_estudiante'] = num_rut  
+            return redirect('registroMatricula')
+            
+        except: 
+            return redirect('registroEstudiante') 
+             
+       
+            
+    return render(request, 'buscar_estudiante.html')  
 
 
 ### Formulario Estudiante
 def registrar_estudiante(request):
+    
     apoderados = Apoderado.objects.all()
     if request.method == "GET":
         contexto = {

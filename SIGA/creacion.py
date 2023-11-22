@@ -26,9 +26,9 @@ def create_admin(correo, nombre, apellido, contrasenia):
 
 if __name__ == "__main__":
     # Puedes pedir al usuario que ingrese los detalles o simplemente codificarlos aquí
-    correo = input("Ingresa el correo electrónico: ")
-    nombre = input("Ingresa el nombre: ")
-    apellido = input("Ingresa el apellido: ")
+    correo = "nicolasespinoza1985@gmail.com"
+    nombre = "Nicolas"
+    apellido = "Espinoza"
     contrasenia = ""
 
     create_admin(correo, nombre, apellido, contrasenia)
