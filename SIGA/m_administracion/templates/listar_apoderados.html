@@ -1,0 +1,115 @@
+{% extends 'base/base.html' %} {% block content %}
+<div class="container mt-4">
+  <h2>Listado de Apoderados</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>RUT</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <!-- Agrega más columnas según sea necesario -->
+        <td>Eliminar</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for apoderado in apoderado %}
+      <tr>
+        <td>{{ apoderado.num_rut }}-{{ apoderado.dv }}</td>
+        <td>{{ apoderado.pnombre }} {{ apoderado.appat }}</td>
+        <td>{{ apoderado.email }}</td>
+        <td>{{ apoderado.numero }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal{{ apoderado.pk }}"
+          >
+            Eliminar
+          </button>
+
+        </form>
+        <!-- Enlace para editar -->
+        <a href="{% url 'modificar_apoderado' apoderado.pk %}" class="btn btn-primary btn-sm">Editar</a>
+
+          <div
+            class="modal fade"
+            id="exampleModal{{ apoderado.pk }}"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Eliminar Apoderado
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  ¿Estás seguro que deseas eliminar al apoderado?: 
+                  {{ apoderado.pnombre }} {{ apoderado.appat }}
+                </div>
+                <div class="modal-footer">
+                  <form
+                    action="{% url 'eliminar_apoderado' apoderado.pk %}"
+                    method="POST"
+                  >
+                    {% csrf_token %}
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                      Confirmar
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="5">No hay apoderados registrados.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script>
+  document
+    .querySelector(".formulario")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      Swal.fire({
+        title: "¿Estás seguro?",
+        text: "No podrás revertir esto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, eliminar!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire("Eliminado!", "El apoderado ha sido eliminado.", "success");
+
+          this.submit();
+        }
+      });
+    });
+</script>
+{% endblock %}

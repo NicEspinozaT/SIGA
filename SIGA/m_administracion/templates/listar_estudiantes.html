@@ -1,0 +1,115 @@
+{% extends 'base/base.html' %} {% block content %}
+<div class="container mt-4">
+  <h2>Listado de Apoderados</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>RUT</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <!-- Agrega más columnas según sea necesario -->
+        <td>Eliminar</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for estudiante in estudiante %}
+      <tr>
+        <td>{{ estudiante.num_rut }}-{{ estudiante.dv }}</td>
+        <td>{{ estudiante.pnombre }} {{ estudiante.appat }}</td>
+        <td>{{ estudiante.email }}</td>
+        <td>{{ estudiante.numero }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal{{ estudiante.pk }}"
+          >
+            Eliminar
+          </button>
+
+        </form>
+        <!-- Enlace para editar -->
+        <a href="{% url 'modificar_estudiante' estudiante.pk %}" class="btn btn-primary btn-sm">Editar</a>
+
+          <div
+            class="modal fade"
+            id="exampleModal{{ estudiante.pk }}"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Eliminar Estudiante
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  ¿Estás seguro que deseas eliminar al estudiante?: 
+                  {{ estudiante.pnombre }} {{ estudiante.appat }}
+                </div>
+                <div class="modal-footer">
+                  <form
+                    action="{% url 'eliminar_estudiante' estudiante.pk %}"
+                    method="POST"
+                  >
+                    {% csrf_token %}
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                      Confirmar
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="5">No hay estudiantes registrados.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script>
+  document
+    .querySelector(".formulario")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      Swal.fire({
+        title: "¿Estás seguro?",
+        text: "No podrás revertir esto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, eliminar!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire("Eliminado!", "El apoderado ha sido eliminado.", "success");
+
+          this.submit();
+        }
+      });
+    });
+</script>
+{% endblock %}

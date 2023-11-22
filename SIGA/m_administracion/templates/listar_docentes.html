@@ -10,7 +10,7 @@
                 <th>Nombre</th>
                 <th>Email</th>
                 <th>Especialidad</th>
-                <!-- Agrega más columnas según sea necesario -->
+                <th>Acciones</th> <!-- Columna para acciones -->
             </tr>
         </thead>
         <tbody>
@@ -20,14 +20,46 @@
                 <td>{{ docente.pnombre }} {{ docente.appat }}</td>
                 <td>{{ docente.email }}</td>
                 <td>{{ docente.get_especialidad_display }}</td>
-                <!-- Agrega más campos según sea necesario -->
+                <td>
+                    <!-- BotÃ³n para eliminar -->
+                    <form action="{% url 'eliminar_docente' docente.pk %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
+                    </form>
+                    <!-- Enlace para editar -->
+                    <a href="{% url 'modificar_docente' docente.pk %}" class="btn btn-primary btn-sm">Editar</a>
+                </td>
             </tr>
             {% empty %}
             <tr>
-                <td colspan="4">No hay docentes registrados.</td>
+                <td colspan="5">No hay docentes registrados.</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
+
+<script>
+    document
+      .querySelector(".formulario")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
+  
+        Swal.fire({
+          title: "¿Estás seguro?",
+          text: "No podrás revertir esto!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Sí, eliminar!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire("Eliminado!", "El apoderado ha sido eliminado.", "success");
+  
+            this.submit();
+          }
+        });
+      });
+  </script>
 {% endblock %}

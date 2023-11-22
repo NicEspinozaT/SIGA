@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from m_user.models import Docente, Apoderado, Estudiante
 from django.contrib.auth import login
 from django.contrib.auth.hashers import check_password
 from .models import Administrador
 from .forms import FormularioDocente, LoginFormAdmin
 from sweetify import success, warning, error
+from m_admision.forms import FormularioApoderado, FormularioEstudiante
 
 
 def registrar_docente(request):
@@ -37,25 +38,75 @@ def registrar_docente(request):
         )
         return render(request,"registro_docente.html",contexto)
 
+
 # CRUD DOCENTE
 def listar_docentes(request):
     docentes = Docente.objects.all()  # Obtiene todos los docentes
     return render(request, "listar_docentes.html", {"docentes": docentes})
 
+def modificar_docente(request, pk):
+    docente = get_object_or_404(Docente, pk=pk)
+    if request.method == "POST":
+        form = FormularioDocente(request.POST, instance=docente)
+        if form.is_valid():
+            form.save()
+            # Mensaje de éxito y redirección
+            return redirect('listar_docentes')
+    else:
+        form = FormularioDocente(instance=docente)
+    return render(request, 'registro_docente.html', {'form_docente': form})
+
+def eliminar_docente(request, pk):
+    docente = Docente.objects.filter(pk=pk)
+    docente.delete()
+    return redirect("listar_docentes")
+
+
+
+# CRUD APODERADO
+def listar_apoderados(request):
+    apoderados = Apoderado.objects.all()
+    return render(request, "listar_apoderados.html", {"apoderado": apoderados})
+
+def modificar_apoderado(request, pk):
+    apoderado = get_object_or_404(Apoderado, pk=pk)
+    if request.method == "POST":
+        form = FormularioApoderado(request.POST, instance=apoderado)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_apoderados')
+    else:
+        form = FormularioApoderado(instance=apoderado)
+    return render(request, 'formulario_apoderado.html', {'form_apoderado': form})
+
+def eliminar_apoderado(request, pk):
+    apoderado = Apoderado.objects.filter(pk=pk)
+    apoderado.delete()
+    return redirect("listar_apoderados")
+
 
 
 # CRUD ESTUDIANTE
-
-
-def listar_Apoderado(request):
-    apoderado = Apoderado.objects.all()
-    return render(request, "listar_apoderado.html", {"apoderado": apoderado})
-
-
-# CRUD Apoderado
-def listar_Estudiante(request):
+def listar_estudiantes(request):
     estudiante = Estudiante.objects.all()
-    return render(request, "listar_estudiante.html", {"estudiante": estudiante})
+    return render(request, "listar_estudiantes.html", {"estudiante": estudiante})
+
+def modificar_estudiante(request, pk):
+    estudiante = get_object_or_404(Estudiante, pk=pk)
+    if request.method == "POST":
+        form = FormularioEstudiante(request.POST, instance=estudiante)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_estudiantes')
+    else:
+        form = FormularioEstudiante(instance=estudiante)
+    return render(request, 'formulario_estudiante.html', {'form_estudiante': form})
+
+def eliminar_estudiante(request, pk):
+    estudiante = Estudiante.objects.filter(pk=pk)
+    estudiante.delete()
+    return redirect("listar_estudiantes")
+
 
 
 def vista_admin(request):
