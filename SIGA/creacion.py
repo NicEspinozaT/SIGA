@@ -29,6 +29,6 @@ if __name__ == "__main__":
     correo = "nicolasespinoza1985@gmail.com"
     nombre = "Nicolas"
     apellido = "Espinoza"
-    contrasenia = ""
+    contrasenia = "RgbRby5P1XE7"
 
     create_admin(correo, nombre, apellido, contrasenia)

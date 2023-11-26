@@ -59,8 +59,8 @@ class Curso(Model):
 class Asignatura(Model):
     nombre = IntegerField(choices=lista_asign, null=False)
     sigla = IntegerField(choices=lista_sigla, null=False)
-    cursos = ManyToManyField(Curso, related_name="cursos")
-    docentes = ManyToManyField(Docente, related_name="docentes")
+    cursos = ForeignKey(Curso, on_delete=CASCADE)
+    docentes = ForeignKey(Docente, on_delete=CASCADE)
 
     class Meta:
         db_table = "Asignatura"

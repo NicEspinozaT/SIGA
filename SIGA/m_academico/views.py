@@ -22,21 +22,21 @@ def agregar_curso(request):
 
 
 def lista_asignaturas(request, curso_id):
-    curso = get_object_or_404(Curso, id=curso_id)
-    asignaturas = curso.cursos.all()  # Obtiene todas las asignaturas asociadas con este curso
+    curso = get_object_or_404(Curso, pk=curso_id)
+    asignaturas = Asignatura.objects.filter(cursos=curso)
     return render(request, 'lista_asignaturas.html', {'curso': curso, 'asignaturas': asignaturas})
 
 
 
 def agregar_asignatura(request, curso_id):
-    curso = get_object_or_404(Curso, id=curso_id)
+    curso = get_object_or_404(Curso, pk=curso_id)
     if request.method == 'POST':
         form = AsignaturaForm(request.POST)
         if form.is_valid():
             asignatura = form.save(commit=False)
-            asignatura.save()
-            asignatura.cursos.add(curso)  # Agrega el curso actual a la asignatura
-            return redirect('detalle_curso', curso_id=curso.id)
+            asignatura.cursos = curso
+            asignatura.save()            
+            return redirect('lista_asignaturas', curso_id=curso.id)
     else:
         form = AsignaturaForm()
 

@@ -27,7 +27,7 @@ class AsignaturaForm(ModelForm):
         fields = [
             "nombre", 
             "sigla",
-            "cursos",
+            # "cursos",
             "docentes",
         ]
         widgets = {
@@ -37,9 +37,9 @@ class AsignaturaForm(ModelForm):
             "sigla": Select(
                 attrs={"class":"form-control"}
             ),
-            "cursos": Select(
-                attrs={"class":"form-control"}
-            ),
+            # "cursos": Select(
+            #     attrs={"class":"form-control"}
+            # ),
             "docentes": Select(
                 attrs={"class":"form-control"}
             )
