@@ -9,14 +9,92 @@ Cursos
 <a class="btn btn-outline-info" href="{% url 'agregar_curso' %}" role="button"
   >Agregar Curso +</a
 >
-<div class="list-group">
-  {% for curso in cursos %}
-    <a href="{% url 'lista_asignaturas' curso.id %}" class="list-group-item list-group-item-action" aria-current="true">
-      {{ curso.get_nivel_display }} {{ curso.get_seccion_display }} - Año: {{ curso.periodo }}
-    </a>
-      {% empty %}
-        <li>No hay cursos disponibles.</li>
-      {% endfor %}   
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nivel</th>
+      <th>Sección</th>
+      <th>Periodo</th>
+      <!-- Agrega más columnas según sea necesario -->
+    </tr>
+  </thead>
+  <tbody>
+    {% for curso in cursos %}
+    <tr>
+      <td>{{ curso.get_nivel_display }}</td>
+      <td>{{ curso.get_seccion_display }}</td>
+      <td>Año: {{ curso.periodo }}</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal{{ curso.pk }}"
+        >
+          Eliminar
+        </button>
+
+      </form>
+      <!-- Enlace para editar -->
+      <a href="{% url 'lista_asignaturas' curso.id %}" class="btn btn-primary btn-sm">Asignaturas</a>
+      <a href="{% url 'modificar_curso' curso.pk %}" class="btn btn-primary btn-sm">Editar</a>
+
+        <div
+          class="modal fade"
+          id="exampleModal{{ curso.pk }}"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                  Eliminar Curso
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                ¿Estás seguro que deseas eliminar el Curso {{ curso.get_nivel_display }}{{ curso.get_seccion_display }}-{{ curso.periodo }}?
+              </div>
+              <div class="modal-footer">
+                <form
+                  action="{% url 'eliminar_curso' curso.pk %}"
+                  method="POST"
+                >
+                  {% csrf_token %}
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button type="submit" class="btn btn-primary">
+                    Confirmar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="5">No hay Cursos  registrados.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 </div>
   
 

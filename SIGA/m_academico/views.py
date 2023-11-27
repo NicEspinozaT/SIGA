@@ -20,11 +20,29 @@ def agregar_curso(request):
         form = CursoForm()
     return render(request, "agregar_curso.html", {"form": form})
 
+def modificar_curso(request, pk):
+    curso = get_object_or_404(Curso, pk=pk)
+    if request.method == "POST":
+        form = CursoForm(request.POST, instance=curso)
+        if form.is_valid():
+            form.save()
+            # Mensaje de éxito y redirección
+            return redirect('cursos')
+    else:
+        form = CursoForm(instance=curso)
+    return render(request, 'registro_docente.html', {'form_docente': form})
+
+def eliminar_curso(request, pk):
+    curso = Curso.objects.filter(pk=pk)
+    curso.delete()
+    return redirect("cursos")
 
 def lista_asignaturas(request, curso_id):
     curso = get_object_or_404(Curso, pk=curso_id)
     asignaturas = Asignatura.objects.filter(cursos=curso)
     return render(request, 'lista_asignaturas.html', {'curso': curso, 'asignaturas': asignaturas})
+
+
 
 
 
