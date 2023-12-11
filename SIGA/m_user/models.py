@@ -157,4 +157,4 @@ class Docente(Model):
         return "".join(secrets.choice(caracteres) for _ in range(longitud))
 
     def __str__(self):
-        return f"{self.num_rut}-{self.dv} {self.pnombre} {self.appat} {self.apmat}"
+        return f"{self.num_rut}-{self.dv} {self.pnombre} {self.appat} {self.apmat} ({self.especialidad})"

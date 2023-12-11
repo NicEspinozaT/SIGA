@@ -74,7 +74,7 @@ class FormularioDocente(ModelForm):
                 attrs={"class":"form-control"}
             ),
             "fecha_contrato": DateInput(
-                attrs={"class":"form-control"}
+                attrs={"class":"form-control", "type": "date"}
             ),
         }
 
